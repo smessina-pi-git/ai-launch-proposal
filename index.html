@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PI Assistant — Open Beta Launch Package</title>
+  <title>Open Beta for PI AI — Launch Package</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto+Serif:ital,opsz,wght@0,8..144,400;0,8..144,500;1,8..144,400&display=swap" rel="stylesheet">
@@ -178,7 +178,26 @@
     .lib-topbar-left h3 { font-size: 13.5px; font-weight: 700; color: #0f172a; }
     .lib-topbar-left p { font-size: 11px; color: #64748b; margin-top: 2px; }
 
-    .lib-search-bar { position: relative; width: 260px; }
+    .lib-topbar-right { display: flex; align-items: center; gap: 12px; }
+
+    .lib-pi-toggle {
+      display: inline-flex; background: #e2e8f0;
+      border-radius: 8px; padding: 3px; gap: 2px;
+    }
+    .lib-toggle-btn {
+      padding: 7px 16px; border-radius: 6px; border: none;
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 12px; font-weight: 600; cursor: pointer;
+      background: transparent; color: #64748b;
+      transition: background 0.15s, color 0.15s, box-shadow 0.15s;
+      white-space: nowrap;
+    }
+    .lib-toggle-btn.active {
+      background: #111111; color: #ffffff;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+    }
+
+    .lib-search-bar { position: relative; width: 220px; }
     .lib-search-bar input {
       width: 100%; padding: 7px 12px 7px 30px;
       font-size: 12.5px; border: 1px solid #e2e8f0; border-radius: 7px;
@@ -471,7 +490,7 @@
     <div class="logo-mark">
       <svg viewBox="0 0 24 24" fill="none"><path d="M12 3C7.03 3 3 7.03 3 12s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm0 4a3 3 0 110 6 3 3 0 010-6zm0 11c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08A7.02 7.02 0 0112 18z" fill="white"/></svg>
     </div>
-    <span class="nav-brand">PI Assistant</span>
+    <span class="nav-brand">Open Beta for PI AI</span>
     <div class="nav-divider"></div>
     <span class="nav-badge">Open Beta · Launch Proposal</span>
   </div>
@@ -491,8 +510,7 @@
 
 <!-- SECTION 1 · SUMMARY -->
 <section id="summary" class="section">
-  <div class="sec-label">Summary</div>
-  <h2 class="sec-title">3 Truths</h2>
+  <h2 class="sec-title">Requirements</h2>
   <p class="sec-sub">The closed beta gave us signal. These insights shape the launch approach.</p>
   <div class="insight-grid">
     <div class="insight-card">
@@ -566,9 +584,15 @@
             <h3>PI Prompt Library</h3>
             <p>Optimized prompts for HR leaders — grounded in PI behavioral science.</p>
           </div>
-          <div class="lib-search-bar">
-            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-            <input type="text" id="lib-search" placeholder="Search prompts…" autocomplete="off" oninput="libSearch(this.value)">
+          <div class="lib-topbar-right">
+            <div class="lib-pi-toggle">
+              <button class="lib-toggle-btn active" id="btn-with-pi" onclick="setPIMode(true)">With PI Data</button>
+              <button class="lib-toggle-btn" id="btn-without-pi" onclick="setPIMode(false)">Without PI Data</button>
+            </div>
+            <div class="lib-search-bar">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+              <input type="text" id="lib-search" placeholder="Search prompts…" autocomplete="off" oninput="libSearch(this.value)">
+            </div>
           </div>
         </div>
 
@@ -885,6 +909,7 @@ const PROMPTS = [
 /* ── STATE ── */
 let activeCategory = 'All';
 let searchQuery = '';
+let piMode = true;
 
 /* ── CATEGORIES ── */
 const CATEGORIES = ['All', ...new Set(PROMPTS.map(p => p.category))];
@@ -904,7 +929,17 @@ function quoteHTML(q) {
 }
 
 function tokenize(text) {
-  return text.replace(/\{\{([^}]+)\}\}/g, '<span class="lib-token">$1</span>');
+  if (piMode) {
+    return text.replace(/\{\{([^}]+)\}\}/g, '<span class="lib-token">$1</span>');
+  }
+  return text.replace(/\{\{([^}]+)\}\}/g, '$1');
+}
+
+function setPIMode(val) {
+  piMode = val;
+  document.getElementById('btn-with-pi').classList.toggle('active', val);
+  document.getElementById('btn-without-pi').classList.toggle('active', !val);
+  renderGrid();
 }
 
 /* ── RENDER SIDEBAR ── */
