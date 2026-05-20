@@ -1239,14 +1239,14 @@ renderLibrary();
   const W = 160, H = 160;
   const centerX = W / 2;
   const centerY = H / 2;
-  const gap = 32;
+  const gap = 25;
   const dotYs = [
     centerY - 1.5 * gap,
     centerY - 0.5 * gap,
     centerY + 0.5 * gap,
     centerY + 1.5 * gap,
   ];
-  const amplitude = 52;
+  const amplitude = 45;
   const speed = 0.0216;
   const phaseOffsets = [0, Math.PI / 2, Math.PI, (3 * Math.PI) / 2];
   let t = 0;
@@ -1256,14 +1256,14 @@ renderLibrary();
     ctx.beginPath();
     ctx.moveTo(xs[0], dotYs[0]);
     for (let i = 1; i < 4; i++) ctx.lineTo(xs[i], dotYs[i]);
-    ctx.strokeStyle = '#e81500';
+    ctx.strokeStyle = '#ef3340';
     ctx.lineWidth = 2;
     ctx.lineJoin = 'round';
     ctx.stroke();
     for (let i = 0; i < 4; i++) {
       ctx.beginPath();
-      ctx.arc(xs[i], dotYs[i], 5.5, 0, Math.PI * 2);
-      ctx.fillStyle = '#e81500';
+      ctx.arc(xs[i], dotYs[i], 11, 0, Math.PI * 2);
+      ctx.fillStyle = '#ef3340';
       ctx.fill();
     }
     t += speed;
