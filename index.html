@@ -64,22 +64,22 @@
 
     /* ── HERO ─────────────────────────────────────────── */
     .hero {
-      padding: 88px 52px 96px;
+      padding: 72px 52px 56px;
       background: var(--white);
       border-bottom: 1px solid var(--border);
-      max-width: 900px;
-      margin: 0 auto;
     }
+
+    .hero-inner { max-width: 1200px; margin: 0 auto; }
 
     .hero-eyebrow {
       display: inline-flex; align-items: center; gap: 7px;
       font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
       text-transform: uppercase; color: var(--gray-500);
-      margin-bottom: 32px;
+      margin-bottom: 20px;
     }
 
     .hero-eyebrow-dot {
-      width: 6px; height: 6px; border-radius: 50%; background: var(--black);
+      width: 6px; height: 6px; border-radius: 50%; background: var(--lib-primary);
       animation: pulse 2.5s ease-in-out infinite;
     }
 
@@ -87,17 +87,41 @@
 
     .hero-title {
       font-family: 'Inter', system-ui, sans-serif;
-      font-weight: 700; font-size: 52px; color: var(--black);
-      line-height: 1.05; letter-spacing: -0.03em; margin-bottom: 32px;
+      font-weight: 700; font-size: 56px; color: var(--black);
+      line-height: 1.02; letter-spacing: -0.03em; margin-bottom: 16px;
     }
 
-    .hero-question {
-      font-family: 'Roboto Serif', Georgia, serif;
-      font-style: italic; font-size: 21px; color: var(--gray-700);
-      max-width: 680px; line-height: 1.6; font-weight: 400;
-      border-left: 2px solid var(--gray-300);
-      padding-left: 20px;
+    .hero-sub {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 19px; color: var(--gray-700);
+      max-width: 680px; line-height: 1.5; font-weight: 400;
+      margin-bottom: 28px;
     }
+
+    .hero-nav {
+      display: flex; align-items: center; gap: 4px;
+      flex-wrap: wrap;
+    }
+    .hero-nav a {
+      color: var(--gray-700); text-decoration: none;
+      font-size: 13px; font-weight: 500;
+      padding: 6px 12px; border-radius: 6px;
+      transition: background 0.12s, color 0.12s;
+    }
+    .hero-nav a:hover { background: var(--gray-100); color: var(--black); }
+    .hero-nav-sep { color: var(--gray-300); font-size: 11px; padding: 0 2px; }
+
+    /* ── COUNTDOWN ─────────────────────────────────── */
+    .nav-countdown {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 4px 10px; border-radius: 6px;
+      background: #fff5f5; border: 1px solid #fecdd3;
+      font-size: 11.5px; font-weight: 500; color: #b91c1c;
+      letter-spacing: 0.01em;
+    }
+    .nav-countdown svg { width: 11px; height: 11px; color: #b91c1c; }
+    .nav-countdown-label { color: #b91c1c; opacity: 0.75; font-weight: 500; }
+    .nav-countdown-time { font-weight: 700; font-variant-numeric: tabular-nums; }
 
     /* ── SHARED ──────────────────────────────────────── */
     .section { padding: 80px 52px; max-width: 1200px; margin: 0 auto; }
@@ -180,26 +204,7 @@
     .lib-topbar-left h3 { font-size: 13.5px; font-weight: 700; color: #0f172a; }
     .lib-topbar-left p { font-size: 11px; color: #64748b; margin-top: 2px; }
 
-    .lib-topbar-right { display: flex; align-items: center; gap: 12px; }
-
-    .lib-pi-toggle {
-      display: inline-flex; background: #e2e8f0;
-      border-radius: 8px; padding: 3px; gap: 2px;
-    }
-    .lib-toggle-btn {
-      padding: 7px 16px; border-radius: 6px; border: none;
-      font-family: 'Inter', system-ui, sans-serif;
-      font-size: 12px; font-weight: 600; cursor: pointer;
-      background: transparent; color: #64748b;
-      transition: background 0.15s, color 0.15s, box-shadow 0.15s;
-      white-space: nowrap;
-    }
-    .lib-toggle-btn.active {
-      background: #111111; color: #ffffff;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.2);
-    }
-
-    .lib-search-bar { position: relative; width: 220px; }
+    .lib-search-bar { position: relative; width: 260px; }
     .lib-search-bar input {
       width: 100%; padding: 7px 12px 7px 30px;
       font-size: 12.5px; border: 1px solid #e2e8f0; border-radius: 7px;
@@ -427,30 +432,40 @@
     .principle-text { font-size: 14px; color: var(--gray-700); line-height: 1.65; }
     .principle-text strong { font-weight: 600; color: var(--black); }
 
-    /* ── SECTION 5 · FLYWHEEL ────────────────────────── */
-    .flywheel-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
-
-    .flywheel-steps { display: flex; flex-direction: column; }
-    .flywheel-step { display: flex; gap: 16px; align-items: flex-start; }
-    .step-connector { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; }
-    .step-node { width: 28px; height: 28px; border-radius: 50%; border: 1.5px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; color: var(--gray-500); background: var(--white); }
-    .step-line { width: 1px; height: 28px; background: var(--border); margin: 4px 0; }
-    .flywheel-step:last-child .step-line { display: none; }
-    .step-content { padding-bottom: 28px; }
-    .flywheel-step:last-child .step-content { padding-bottom: 0; }
-    .step-title { font-size: 13.5px; font-weight: 600; color: var(--black); margin-bottom: 3px; }
-    .step-body { font-size: 13px; color: var(--gray-700); font-weight: 400; line-height: 1.55; }
-
-    .recognition-card { background: var(--white); border: 1px solid var(--border); border-radius: 10px; padding: 28px; }
-    .rec-tag { font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gray-500); margin-bottom: 14px; }
-    .rec-title { font-size: 18px; font-weight: 700; color: var(--black); margin-bottom: 12px; line-height: 1.3; letter-spacing: -0.01em; }
-    .rec-body { font-size: 13.5px; color: var(--gray-700); font-weight: 400; line-height: 1.7; margin-bottom: 20px; }
-    .rec-bullets { display: flex; flex-direction: column; gap: 9px; }
-    .rec-bullet { display: flex; gap: 10px; align-items: flex-start; font-size: 13px; color: var(--gray-700); line-height: 1.5; }
-    .rec-bullet-dash { color: var(--gray-300); flex-shrink: 0; font-weight: 600; }
-    .award-chip { display: inline-flex; align-items: center; gap: 7px; margin-top: 20px; padding: 8px 13px; background: var(--gray-50); border: 1px solid var(--border); border-radius: 7px; }
-    .award-chip svg { width: 13px; height: 13px; color: var(--gray-500); }
-    .award-chip-text { font-size: 12px; font-weight: 500; color: var(--gray-700); }
+    /* ── SECTION 5 · FLYWHEEL CYCLE ─────────────────── */
+    .flywheel-cycle {
+      display: grid;
+      grid-template-columns: 1fr 56px 1fr;
+      gap: 14px 8px;
+      align-items: center;
+      max-width: 880px; margin: 0 auto;
+    }
+    .cycle-step {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 18px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+    .cycle-num {
+      font-size: 10.5px; font-weight: 700;
+      color: var(--lib-primary);
+      letter-spacing: 0.08em; margin-bottom: 6px;
+    }
+    .cycle-title {
+      font-size: 14px; font-weight: 600;
+      color: var(--black); line-height: 1.35;
+    }
+    .cycle-body {
+      font-size: 12.5px; color: var(--gray-700);
+      margin-top: 5px; line-height: 1.5;
+    }
+    .cycle-arrow {
+      display: flex; align-items: center; justify-content: center;
+      color: var(--lib-primary);
+    }
+    .cycle-arrow svg { width: 22px; height: 22px; }
+    .cycle-spacer { width: 100%; }
 
     /* ── SECTION 6 · TIMELINE ─────────────────────────── */
     .timeline-track { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0; position: relative; }
@@ -500,7 +515,10 @@
       .lib-uc-prompts { grid-template-columns: 1fr; }
       .asset-grid { grid-template-columns: repeat(2, 1fr); }
       .partner-intro { grid-template-columns: 1fr; gap: 20px; }
-      .flywheel-layout { grid-template-columns: 1fr; }
+      .flywheel-cycle { grid-template-columns: 1fr 32px 1fr; gap: 10px 4px; }
+      .cycle-step { padding: 12px 14px; }
+      .cycle-title { font-size: 13px; }
+      .nav-countdown .nav-countdown-label { display: none; }
       .timeline-track { grid-template-columns: repeat(3, 1fr); }
       .timeline-track::before { display: none; }
       .ask-questions { grid-template-columns: 1fr; }
@@ -520,20 +538,36 @@
     </div>
     <span class="nav-brand">Open Beta for PI AI</span>
     <div class="nav-divider"></div>
-    <span class="nav-badge">Open Beta · Launch Proposal</span>
+    <span class="nav-countdown" id="nav-countdown" title="Time until feedback is needed (Friday May 22, midnight ET)">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>
+      <span class="nav-countdown-label">Time until feedback needed:</span>
+      <span class="nav-countdown-time" id="countdown-time">—</span>
+    </span>
   </div>
   <div class="nav-links">
     <a href="#summary">Requirements</a>
     <a href="#package">The Package</a>
+    <a href="#flywheel">Flywheel</a>
     <a href="#gonogo">Go / No-Go</a>
   </div>
 </nav>
 
 <!-- HERO -->
 <div class="hero">
-  <div class="hero-eyebrow"><span class="hero-eyebrow-dot"></span>Launching AI: Open Beta</div>
-  <h1 class="hero-title">The Launch Package</h1>
-  <p class="hero-question">"What's happening on a consultative call that gets someone to use the Assistant for the first time — and how do we replicate that in a digital, scalable experience?"</p>
+  <div class="hero-inner">
+    <div class="hero-eyebrow"><span class="hero-eyebrow-dot"></span>Launch Proposal · Draft v1</div>
+    <h1 class="hero-title">Launching Open Beta</h1>
+    <p class="hero-sub">Our approach to launching open beta of PI's AI features.</p>
+    <div class="hero-nav">
+      <a href="#summary">Requirements</a>
+      <span class="hero-nav-sep">·</span>
+      <a href="#package">The Package</a>
+      <span class="hero-nav-sep">·</span>
+      <a href="#flywheel">Flywheel</a>
+      <span class="hero-nav-sep">·</span>
+      <a href="#gonogo">Go / No-Go</a>
+    </div>
+  </div>
 </div>
 
 <!-- SECTION 1 · REQUIREMENTS -->
@@ -612,15 +646,9 @@
             <h3>PI Prompt Library</h3>
             <p>Organized by what HR leaders actually need to do — grounded in PI behavioral science.</p>
           </div>
-          <div class="lib-topbar-right">
-            <div class="lib-pi-toggle">
-              <button class="lib-toggle-btn active" id="btn-with-pi" onclick="setPIMode(true)">With PI Data</button>
-              <button class="lib-toggle-btn" id="btn-without-pi" onclick="setPIMode(false)">Without PI Data</button>
-            </div>
-            <div class="lib-search-bar">
-              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-              <input type="text" id="lib-search" placeholder="Search prompts…" autocomplete="off" oninput="libSearch(this.value)">
-            </div>
+          <div class="lib-search-bar">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+            <input type="text" id="lib-search" placeholder="Search prompts…" autocomplete="off" oninput="libSearch(this.value)">
           </div>
         </div>
 
@@ -750,31 +778,71 @@
 <!-- SECTION 5 · FLYWHEEL -->
 <div id="flywheel" class="section-full section-alt">
   <div class="section-full-inner">
-    <div class="sec-label">Pillar 03 · Recognition & GA Seedlings</div>
-    <h2 class="sec-title">Gathering Social Proof</h2>
-    <p class="sec-sub">Every win compounds the next. Wins become featured cards; cards drive activation; activation generates new wins.</p>
-    <div class="flywheel-layout">
-      <div class="flywheel-steps">
-        <div class="flywheel-step"><div class="step-connector"><div class="step-node">1</div><div class="step-line"></div></div><div class="step-content"><div class="step-title">Real customer prompts</div><div class="step-body">Captured from product, Gong, and support — validated before they go on the page.</div></div></div>
-        <div class="flywheel-step"><div class="step-connector"><div class="step-node">2</div><div class="step-line"></div></div><div class="step-content"><div class="step-title">Curated page cards</div><div class="step-body">Each card is library entry + capability demo + social proof in one surface.</div></div></div>
-        <div class="flywheel-step"><div class="step-connector"><div class="step-node">3</div><div class="step-line"></div></div><div class="step-content"><div class="step-title">Activation</div><div class="step-body">More HR Leaders using the Assistant without a consultative call.</div></div></div>
-        <div class="flywheel-step"><div class="step-connector"><div class="step-node">4</div><div class="step-line"></div></div><div class="step-content"><div class="step-title">New stories</div><div class="step-body">Wows become featured cards and Pioneers nominees.</div></div></div>
-        <div class="flywheel-step"><div class="step-connector"><div class="step-node">5</div><div class="step-line"></div></div><div class="step-content"><div class="step-title">Compounding feed</div><div class="step-body">Stories become content; content drives the next activation cycle.</div></div></div>
+    <div class="sec-label">Pillar 03 · The Customer Marketing Engine</div>
+    <h2 class="sec-title">Open Beta Launch Flywheel</h2>
+    <p class="sec-sub">Every customer prompt becomes a story; every story drives the next activation. A self-reinforcing cycle the launch package is designed to start.</p>
+
+    <div class="flywheel-cycle">
+      <!-- Row 1: 01 → 02 -->
+      <div class="cycle-step">
+        <div class="cycle-num">01</div>
+        <div class="cycle-title">Real customer prompts captured</div>
+        <div class="cycle-body">In product, Gong, support tickets.</div>
       </div>
-      <div class="recognition-card">
-        <div class="rec-tag">The Recognition Program</div>
-        <div class="rec-title">Pioneers: HR Leaders driving real AI-in-HR results.</div>
-        <div class="rec-body">Partners nominate their clients. Recognition goes to the HR Leaders doing the work — partners earn reflected status for putting them in position to succeed.</div>
-        <div class="rec-bullets">
-          <div class="rec-bullet"><span class="rec-bullet-dash">—</span>Incentivizes adoption during open beta when momentum matters most</div>
-          <div class="rec-bullet"><span class="rec-bullet-dash">—</span>Generates the named case studies the GA narrative will need</div>
-          <div class="rec-bullet"><span class="rec-bullet-dash">—</span>Reflected status for partners whose clients lead the way</div>
-          <div class="rec-bullet"><span class="rec-bullet-dash">—</span>Seeds the prompt library and social proof feed for GA</div>
-        </div>
-        <div class="award-chip">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
-          <span class="award-chip-text">Pioneers · Partner-nominated HR Leader recognition</span>
-        </div>
+      <div class="cycle-arrow cycle-arrow-right"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+      <div class="cycle-step">
+        <div class="cycle-num">02</div>
+        <div class="cycle-title">Curation layer</div>
+        <div class="cycle-body">Anonymize, polish, tag, ladder to use case.</div>
+      </div>
+
+      <!-- Row 2: vertical arrows -->
+      <div class="cycle-arrow cycle-arrow-up"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg></div>
+      <div class="cycle-spacer"></div>
+      <div class="cycle-arrow cycle-arrow-down"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg></div>
+
+      <!-- Row 3: 08 ↑   ↓ 03 -->
+      <div class="cycle-step">
+        <div class="cycle-num">08</div>
+        <div class="cycle-title">Customers become case study candidates</div>
+      </div>
+      <div class="cycle-spacer"></div>
+      <div class="cycle-step">
+        <div class="cycle-num">03</div>
+        <div class="cycle-title">Marketing page surfaces prompt-output pairs</div>
+      </div>
+
+      <!-- Row 4: vertical arrows -->
+      <div class="cycle-arrow cycle-arrow-up"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg></div>
+      <div class="cycle-spacer"></div>
+      <div class="cycle-arrow cycle-arrow-down"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg></div>
+
+      <!-- Row 5: 07 ↑   ↓ 04 -->
+      <div class="cycle-step">
+        <div class="cycle-num">07</div>
+        <div class="cycle-title">Best stories elevated to Pioneers / Wavemakers</div>
+      </div>
+      <div class="cycle-spacer"></div>
+      <div class="cycle-step">
+        <div class="cycle-num">04</div>
+        <div class="cycle-title">Each pair = shareable social content</div>
+      </div>
+
+      <!-- Row 6: vertical arrows -->
+      <div class="cycle-arrow cycle-arrow-up"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg></div>
+      <div class="cycle-spacer"></div>
+      <div class="cycle-arrow cycle-arrow-down"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg></div>
+
+      <!-- Row 7: 06 ← 05 -->
+      <div class="cycle-step">
+        <div class="cycle-num">06</div>
+        <div class="cycle-title">Case studies feed back to marketing page as featured</div>
+      </div>
+      <div class="cycle-arrow cycle-arrow-left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg></div>
+      <div class="cycle-step">
+        <div class="cycle-num">05</div>
+        <div class="cycle-title">Pairs drive activation</div>
+        <div class="cycle-body">New users adopt prompts.</div>
       </div>
     </div>
   </div>
@@ -1029,22 +1097,36 @@ const USE_CASES = [
 
 /* ── STATE ── */
 let searchQuery = '';
-let piMode = true;
 
 /* ── TOKEN RENDERING ── */
 function tokenize(text) {
-  if (piMode) {
-    return text.replace(/\{\{([^}]+)\}\}/g, '<span class="lib-token">$1</span>');
-  }
-  return text.replace(/\{\{([^}]+)\}\}/g, '$1');
+  return text.replace(/\{\{([^}]+)\}\}/g, '<span class="lib-token">$1</span>');
 }
 
-function setPIMode(val) {
-  piMode = val;
-  document.getElementById('btn-with-pi').classList.toggle('active', val);
-  document.getElementById('btn-without-pi').classList.toggle('active', !val);
-  renderLibrary();
+/* ── COUNTDOWN ── */
+// Target: midnight at the END of Friday May 22, 2026 Eastern Time (EDT = UTC-4)
+// = 2026-05-23 00:00:00 EDT = 2026-05-23 04:00:00 UTC
+const COUNTDOWN_TARGET = new Date('2026-05-23T04:00:00Z').getTime();
+
+function updateCountdown() {
+  const el = document.getElementById('countdown-time');
+  if (!el) return;
+  const diff = COUNTDOWN_TARGET - Date.now();
+  if (diff <= 0) {
+    el.textContent = 'feedback window closed';
+    return;
+  }
+  const days = Math.floor(diff / 86400000);
+  const hours = Math.floor((diff % 86400000) / 3600000);
+  const minutes = Math.floor((diff % 3600000) / 60000);
+  let str = '';
+  if (days > 0) str += days + 'd ';
+  if (hours > 0 || days > 0) str += hours + 'h ';
+  str += minutes + 'm';
+  el.textContent = str;
 }
+updateCountdown();
+setInterval(updateCountdown, 30000);
 
 /* ── RENDER SIDEBAR ── */
 function renderSidebar() {
