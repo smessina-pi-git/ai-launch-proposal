@@ -124,7 +124,7 @@
     .nav-countdown-time { font-weight: 700; font-variant-numeric: tabular-nums; }
 
     /* ── SHARED ──────────────────────────────────────── */
-    .section { padding: 80px 52px; max-width: 1200px; margin: 0 auto; }
+    .section { padding: 80px 52px; max-width: 1304px; margin: 0 auto; }
     .section-full { padding: 80px 52px; }
     .section-full-inner { max-width: 1200px; margin: 0 auto; }
     .section-alt { background: var(--gray-50); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
@@ -141,7 +141,13 @@
       padding: 24px; background: var(--white);
     }
 
-    .insight-num { font-size: 11px; font-weight: 600; color: var(--gray-300); letter-spacing: 0.06em; margin-bottom: 14px; }
+    .insight-check {
+      width: 24px; height: 24px; border-radius: 6px;
+      background: var(--lib-primary); color: white;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 14px;
+    }
+    .insight-check svg { width: 14px; height: 14px; }
     .insight-headline { font-size: 15px; font-weight: 600; color: var(--black); margin-bottom: 8px; line-height: 1.35; }
     .insight-body { font-size: 13.5px; color: var(--gray-700); line-height: 1.65; font-weight: 400; }
     .insight-body em { font-style: italic; }
@@ -158,6 +164,20 @@
     .pillar-overview-title { font-size: 13px; font-weight: 700; color: var(--black); margin-bottom: 6px; letter-spacing: 0.01em; text-transform: uppercase; }
     .pillar-overview-hook { font-size: 13px; color: var(--gray-500); font-style: italic; margin-bottom: 12px; }
     .pillar-overview-desc { font-size: 13.5px; color: var(--gray-700); font-weight: 400; line-height: 1.65; }
+
+    /* ── POC SECTION (dark gradient) ─────────────────── */
+    #poc {
+      background: linear-gradient(180deg, #1d1d28 0%, #29263a 100%);
+      color: var(--white);
+    }
+    #poc .sec-label { color: rgba(255,255,255,0.55); }
+    #poc .sec-title { color: var(--white); }
+    #poc .sec-sub { color: rgba(255,255,255,0.7); }
+    .poc-subhead {
+      font-size: 13.5px; color: rgba(255,255,255,0.55);
+      font-style: italic; margin-bottom: 36px;
+      line-height: 1.6; max-width: 640px;
+    }
 
     /* ── POC SHELL ───────────────────────────────────── */
     .poc-shell {
@@ -344,15 +364,20 @@
     .doc-header { position: absolute; left: 0; right: 0; top: 0; height: 18%; background: #1a1a1a; }
     .doc-header.dark-red { background: #1a1a1a; border-bottom: 2px solid var(--red); }
 
-    /* logo / badge sizing for portrait docs */
-    .mockup-portrait .partner-logo-badge { top: 5%; left: 7%; }
-    .mockup-portrait .partner-logo-mark { width: 11px; height: 11px; }
-    .mockup-portrait .partner-logo-mark svg { width: 6px; height: 6px; }
-    .mockup-portrait .partner-logo-name { font-size: 5.5px; }
-    .mockup-portrait .pi-badge { top: 5%; right: 7%; }
-    .mockup-portrait .pi-badge-mark { width: 10px; height: 10px; }
-    .mockup-portrait .pi-badge-mark svg { width: 6px; height: 6px; }
-    .mockup-portrait .pi-badge-name { font-size: 5.5px; color: rgba(255,255,255,0.7); }
+    /* logo / badge sizing for portrait docs — larger, more prominent */
+    .mockup-portrait .partner-logo-badge { top: 5%; left: 7%; gap: 5px; }
+    .mockup-portrait .partner-logo-mark { width: 18px; height: 18px; }
+    .mockup-portrait .partner-logo-mark svg { width: 10px; height: 10px; }
+    .mockup-portrait .partner-logo-name { font-size: 9px; }
+    .mockup-portrait .pi-badge { top: 5%; right: 7%; gap: 3px; }
+    .mockup-portrait .pi-badge-mark { width: 14px; height: 14px; }
+    .mockup-portrait .pi-badge-mark svg { width: 8px; height: 8px; }
+    .mockup-portrait .pi-badge-name { font-size: 8px; color: rgba(255,255,255,0.75); }
+    /* On white-bg docs (everything except deck), invert PI badge name color */
+    .asset-email .pi-badge-name,
+    .asset-faq .pi-badge-name,
+    .asset-prompts .pi-badge-name,
+    .asset-onepager .pi-badge-name { color: rgba(255,255,255,0.85); }
 
     /* asset-email — email layout */
     .asset-email .doc-header { background: #1a1a1a; }
@@ -379,19 +404,22 @@
     .asset-faq .faq-q-3 { top: 72%; }
     .asset-faq .faq-a-3 { top: 79%; height: 3%; right: 20%; }
 
-    /* asset-deck — landscape deck cover */
-    .asset-deck { background: #1a1a1a; }
-    .asset-deck .mockup-bg-accent { position: absolute; width: 70%; height: 100%; top: -20%; right: -15%; background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 65%); border-radius: 50%; pointer-events: none; }
-    .asset-deck .partner-logo-badge { top: 10%; left: 7%; }
-    .asset-deck .partner-logo-mark { width: 14px; height: 14px; }
-    .asset-deck .partner-logo-mark svg { width: 8px; height: 8px; }
-    .asset-deck .partner-logo-name { font-size: 6px; }
-    .asset-deck .pi-badge { bottom: 14%; right: 7%; top: auto; }
-    .asset-deck .pi-badge-mark { width: 11px; height: 11px; }
-    .asset-deck .pi-badge-mark svg { width: 6px; height: 6px; }
-    .asset-deck .pi-badge-name { font-size: 6px; }
-    .asset-deck .deck-title-line { left: 7%; right: 25%; top: 42%; height: 8%; background: rgba(255,255,255,0.82); border-radius: 2px; position: absolute; }
-    .asset-deck .deck-sub-line { left: 7%; right: 42%; top: 55%; height: 4%; background: rgba(255,255,255,0.28); border-radius: 2px; position: absolute; }
+    /* asset-deck — deck overview with 6 slide thumbnails */
+    .asset-deck { background: #ffffff; }
+    .asset-deck .doc-header { background: #1a1a1a; }
+    .asset-deck .deck-grid {
+      position: absolute;
+      left: 8%; right: 8%; top: 26%; bottom: 14%;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 5%;
+    }
+    .asset-deck .deck-slide {
+      background: #d4d4d8;
+      border-radius: 3px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
 
     /* asset-prompts — numbered prompts list */
     .asset-prompts .doc-header { background: #1a1a1a; }
@@ -432,40 +460,84 @@
     .principle-text { font-size: 14px; color: var(--gray-700); line-height: 1.65; }
     .principle-text strong { font-weight: 600; color: var(--black); }
 
-    /* ── SECTION 5 · FLYWHEEL CYCLE ─────────────────── */
-    .flywheel-cycle {
+    /* ── SECTION 5 · FLYWHEEL CIRCLE ─────────────────── */
+    .flywheel-wrap {
+      position: relative;
+      max-width: 940px;
+      margin: 0 auto;
+      padding: 20px 0;
+    }
+    .flywheel-circle {
       display: grid;
-      grid-template-columns: 1fr 56px 1fr;
-      gap: 14px 8px;
-      align-items: center;
-      max-width: 880px; margin: 0 auto;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      gap: 24px;
+      position: relative;
+      z-index: 2;
     }
     .cycle-step {
       background: var(--white);
       border: 1px solid var(--border);
-      border-radius: 12px;
+      border-radius: 14px;
       padding: 16px 18px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      min-height: 96px;
+      display: flex; flex-direction: column; justify-content: center;
+      position: relative;
+      transition: box-shadow 0.2s, transform 0.2s;
     }
+    .cycle-step:hover { box-shadow: 0 6px 18px rgba(0,0,0,0.09); transform: translateY(-2px); }
     .cycle-num {
       font-size: 10.5px; font-weight: 700;
       color: var(--lib-primary);
       letter-spacing: 0.08em; margin-bottom: 6px;
     }
     .cycle-title {
-      font-size: 14px; font-weight: 600;
+      font-size: 13.5px; font-weight: 600;
       color: var(--black); line-height: 1.35;
     }
     .cycle-body {
-      font-size: 12.5px; color: var(--gray-700);
-      margin-top: 5px; line-height: 1.5;
+      font-size: 12px; color: var(--gray-700);
+      margin-top: 4px; line-height: 1.5;
     }
-    .cycle-arrow {
-      display: flex; align-items: center; justify-content: center;
-      color: var(--lib-primary);
+    /* The hub at center */
+    .cycle-hub {
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      background: var(--lib-primary);
+      border-radius: 50%;
+      aspect-ratio: 1;
+      width: 86%;
+      margin: auto;
+      color: white;
+      box-shadow: 0 6px 24px rgba(239,51,64,0.25);
     }
-    .cycle-arrow svg { width: 22px; height: 22px; }
-    .cycle-spacer { width: 100%; }
+    .cycle-hub svg { width: 28px; height: 28px; opacity: 0.9; margin-bottom: 6px; animation: spin 12s linear infinite; }
+    .cycle-hub-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    /* Numbered position classes */
+    .pos-1 { grid-row: 1; grid-column: 2; }
+    .pos-2 { grid-row: 1; grid-column: 3; }
+    .pos-3 { grid-row: 2; grid-column: 3; }
+    .pos-4 { grid-row: 3; grid-column: 3; }
+    .pos-5 { grid-row: 3; grid-column: 2; }
+    .pos-6 { grid-row: 3; grid-column: 1; }
+    .pos-7 { grid-row: 2; grid-column: 1; }
+    .pos-8 { grid-row: 1; grid-column: 1; }
+    .cycle-hub-wrap { grid-row: 2; grid-column: 2; display: flex; align-items: center; justify-content: center; }
+
+    /* ── TIMELINE REMINDER ─────────────────────────── */
+    .timeline-reminder {
+      display: flex; align-items: center; gap: 4px;
+      margin: 0 0 18px;
+    }
+    .timeline-reminder-label {
+      font-size: 14px; font-weight: 600; color: var(--lib-primary);
+    }
 
     /* ── SECTION 6 · TIMELINE ─────────────────────────── */
     .timeline-track { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0; position: relative; }
@@ -490,14 +562,19 @@
     .ask-question { font-size: 15px; font-weight: 600; color: var(--black); line-height: 1.35; margin-bottom: 8px; }
     .ask-detail { font-size: 13px; color: var(--gray-700); font-weight: 400; line-height: 1.6; }
 
-    .dependencies { background: var(--white); border: 1px solid var(--border); border-radius: 10px; padding: 24px 28px; }
-    .dep-title { font-size: 11px; font-weight: 600; color: var(--gray-500); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 18px; }
-    .dep-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 40px; }
-    .dep-item { display: flex; gap: 10px; align-items: flex-start; }
-    .dep-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--gray-300); flex-shrink: 0; margin-top: 7px; }
-    .dep-text { font-size: 13px; color: var(--gray-700); font-weight: 400; line-height: 1.6; }
-    .dep-text strong { font-weight: 600; color: var(--black); display: block; margin-bottom: 1px; }
-    .dep-footnote { margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--gray-100); font-size: 12.5px; color: var(--gray-500); font-style: italic; }
+    .dependencies-list { padding: 24px 0 0; }
+    .dep-title { font-size: 11px; font-weight: 600; color: var(--gray-500); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 14px; }
+    .dep-items { list-style: none; padding: 0; margin: 0; }
+    .dep-items li {
+      display: flex; gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--gray-100);
+      font-size: 13.5px; color: var(--gray-700); line-height: 1.6;
+    }
+    .dep-items li:last-child { border-bottom: none; }
+    .dep-items strong { font-weight: 600; color: var(--black); flex-shrink: 0; min-width: 240px; }
+    .dep-items span { color: var(--gray-500); }
+    .dep-footnote { margin-top: 18px; font-size: 12.5px; color: var(--gray-500); font-style: italic; }
 
     /* ── FOOTER ──────────────────────────────────────── */
     .site-footer { border-top: 1px solid var(--border); padding: 24px 52px; }
@@ -515,8 +592,11 @@
       .lib-uc-prompts { grid-template-columns: 1fr; }
       .asset-grid { grid-template-columns: repeat(2, 1fr); }
       .partner-intro { grid-template-columns: 1fr; gap: 20px; }
-      .flywheel-cycle { grid-template-columns: 1fr 32px 1fr; gap: 10px 4px; }
-      .cycle-step { padding: 12px 14px; }
+      .flywheel-circle { grid-template-columns: 1fr 1fr; grid-template-rows: auto; gap: 12px; }
+      .flywheel-circle > * { grid-row: auto !important; grid-column: auto !important; }
+      .cycle-hub-wrap { grid-column: span 2 !important; }
+      .cycle-hub { width: 40%; }
+      .cycle-step { padding: 12px 14px; min-height: auto; }
       .cycle-title { font-size: 13px; }
       .nav-countdown .nav-countdown-label { display: none; }
       .timeline-track { grid-template-columns: repeat(3, 1fr); }
@@ -555,7 +635,7 @@
 <!-- HERO -->
 <div class="hero">
   <div class="hero-inner">
-    <div class="hero-eyebrow"><span class="hero-eyebrow-dot"></span>Launch Proposal · Draft v1</div>
+    <div class="hero-eyebrow">Marketing Launch Proposal</div>
     <h1 class="hero-title">Launching Open Beta</h1>
     <p class="hero-sub">Our approach to launching open beta of PI's AI features.</p>
     <div class="hero-nav">
@@ -576,17 +656,17 @@
   <p class="sec-sub">The closed beta gave us signal. These insights shape the launch approach.</p>
   <div class="insight-grid">
     <div class="insight-card">
-      <div class="insight-num">01</div>
+      <div class="insight-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
       <div class="insight-headline">The HR Leader is the audience.</div>
       <div class="insight-body">The PI Champion is the activator and the carrier. Managers receive her coaching — they're not the <em>primary</em> audience of this package.</div>
     </div>
     <div class="insight-card">
-      <div class="insight-num">02</div>
+      <div class="insight-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
       <div class="insight-headline">Partners need to look like experts.</div>
       <div class="insight-body">They can't be expected to be on-the-fly prompt writers. Partners need to feel confident bringing the Assistant into a client engagement.</div>
     </div>
     <div class="insight-card">
-      <div class="insight-num">03</div>
+      <div class="insight-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
       <div class="insight-headline">Activation is a blank-page problem.</div>
       <div class="insight-body">Users don't know where to start — which is why live consultative calls have been driving closed beta activation. The package solves that at scale.</div>
     </div>
@@ -627,6 +707,7 @@
   <div class="section-full-inner">
     <div class="sec-label">Pillar 01 · The Activation Engine</div>
     <h2 class="sec-title">Marketing Site & Prompt Library</h2>
+    <p class="poc-subhead">This is a low-fidelity mockup of how a PI prompt library would behave. The real thing would look more engaging — this is a proof of concept.</p>
 
     <div class="poc-shell">
       <div class="poc-chrome">
@@ -655,7 +736,7 @@
         <!-- Sidebar + main -->
         <div class="lib-inner">
           <aside class="lib-sidebar">
-            <div class="lib-sidebar-title">Use Cases</div>
+            <div class="lib-sidebar-title">What can the AI do?</div>
             <ul class="lib-nav-list" id="lib-nav-list"></ul>
           </aside>
           <div class="lib-scroll" id="lib-scroll">
@@ -725,11 +806,17 @@
     <!-- 3. Lunch 'n Learn deck -->
     <div class="asset-item">
       <div class="mockup-frame mockup-portrait asset-deck">
-        <div class="mockup-bg-accent"></div>
+        <div class="doc-header"></div>
         <div class="partner-logo-badge"><div class="partner-logo-mark"><svg viewBox="0 0 10 10" fill="none"><polygon points="5,1 9,8 1,8" fill="white" opacity="0.9"/></svg></div><span class="partner-logo-name">Apex</span></div>
-        <div class="deck-title-line"></div>
-        <div class="deck-sub-line"></div>
         <div class="pi-badge"><div class="pi-badge-mark"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3C7.03 3 3 7.03 3 12s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm0 4a3 3 0 110 6 3 3 0 010-6zm0 11c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08A7.02 7.02 0 0112 18z" fill="white"/></svg></div><span class="pi-badge-name">PI</span></div>
+        <div class="deck-grid">
+          <div class="deck-slide"></div>
+          <div class="deck-slide"></div>
+          <div class="deck-slide"></div>
+          <div class="deck-slide"></div>
+          <div class="deck-slide"></div>
+          <div class="deck-slide"></div>
+        </div>
         <div class="mockup-pi-strip"></div>
       </div>
       <div class="asset-label">Lunch 'n Learn deck</div>
@@ -782,67 +869,51 @@
     <h2 class="sec-title">Open Beta Launch Flywheel</h2>
     <p class="sec-sub">Every customer prompt becomes a story; every story drives the next activation. A self-reinforcing cycle the launch package is designed to start.</p>
 
-    <div class="flywheel-cycle">
-      <!-- Row 1: 01 → 02 -->
-      <div class="cycle-step">
-        <div class="cycle-num">01</div>
-        <div class="cycle-title">Real customer prompts captured</div>
-        <div class="cycle-body">In product, Gong, support tickets.</div>
-      </div>
-      <div class="cycle-arrow cycle-arrow-right"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
-      <div class="cycle-step">
-        <div class="cycle-num">02</div>
-        <div class="cycle-title">Curation layer</div>
-        <div class="cycle-body">Anonymize, polish, tag, ladder to use case.</div>
-      </div>
+    <div class="flywheel-wrap">
+      <div class="flywheel-circle">
+        <div class="cycle-step pos-8">
+          <div class="cycle-num">08</div>
+          <div class="cycle-title">Customers become case study candidates</div>
+        </div>
+        <div class="cycle-step pos-1">
+          <div class="cycle-num">01</div>
+          <div class="cycle-title">Real customer prompts captured</div>
+          <div class="cycle-body">In product, Gong, support.</div>
+        </div>
+        <div class="cycle-step pos-2">
+          <div class="cycle-num">02</div>
+          <div class="cycle-title">Curation layer</div>
+          <div class="cycle-body">Anonymize, polish, tag, ladder to use case.</div>
+        </div>
 
-      <!-- Row 2: vertical arrows -->
-      <div class="cycle-arrow cycle-arrow-up"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg></div>
-      <div class="cycle-spacer"></div>
-      <div class="cycle-arrow cycle-arrow-down"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg></div>
+        <div class="cycle-step pos-7">
+          <div class="cycle-num">07</div>
+          <div class="cycle-title">Best stories elevated to Pioneers / Wavemakers</div>
+        </div>
+        <div class="cycle-hub-wrap">
+          <div class="cycle-hub">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/><path d="M21 12c0-4.97-4.03-9-9-9"/><polyline points="21 5 21 12 14 12"/></svg>
+            <div class="cycle-hub-label">The Flywheel</div>
+          </div>
+        </div>
+        <div class="cycle-step pos-3">
+          <div class="cycle-num">03</div>
+          <div class="cycle-title">Marketing page surfaces prompt-output pairs</div>
+        </div>
 
-      <!-- Row 3: 08 ↑   ↓ 03 -->
-      <div class="cycle-step">
-        <div class="cycle-num">08</div>
-        <div class="cycle-title">Customers become case study candidates</div>
-      </div>
-      <div class="cycle-spacer"></div>
-      <div class="cycle-step">
-        <div class="cycle-num">03</div>
-        <div class="cycle-title">Marketing page surfaces prompt-output pairs</div>
-      </div>
-
-      <!-- Row 4: vertical arrows -->
-      <div class="cycle-arrow cycle-arrow-up"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg></div>
-      <div class="cycle-spacer"></div>
-      <div class="cycle-arrow cycle-arrow-down"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg></div>
-
-      <!-- Row 5: 07 ↑   ↓ 04 -->
-      <div class="cycle-step">
-        <div class="cycle-num">07</div>
-        <div class="cycle-title">Best stories elevated to Pioneers / Wavemakers</div>
-      </div>
-      <div class="cycle-spacer"></div>
-      <div class="cycle-step">
-        <div class="cycle-num">04</div>
-        <div class="cycle-title">Each pair = shareable social content</div>
-      </div>
-
-      <!-- Row 6: vertical arrows -->
-      <div class="cycle-arrow cycle-arrow-up"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg></div>
-      <div class="cycle-spacer"></div>
-      <div class="cycle-arrow cycle-arrow-down"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg></div>
-
-      <!-- Row 7: 06 ← 05 -->
-      <div class="cycle-step">
-        <div class="cycle-num">06</div>
-        <div class="cycle-title">Case studies feed back to marketing page as featured</div>
-      </div>
-      <div class="cycle-arrow cycle-arrow-left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg></div>
-      <div class="cycle-step">
-        <div class="cycle-num">05</div>
-        <div class="cycle-title">Pairs drive activation</div>
-        <div class="cycle-body">New users adopt prompts.</div>
+        <div class="cycle-step pos-6">
+          <div class="cycle-num">06</div>
+          <div class="cycle-title">Case studies feed back to page as featured</div>
+        </div>
+        <div class="cycle-step pos-5">
+          <div class="cycle-num">05</div>
+          <div class="cycle-title">Pairs drive activation</div>
+          <div class="cycle-body">New users adopt prompts.</div>
+        </div>
+        <div class="cycle-step pos-4">
+          <div class="cycle-num">04</div>
+          <div class="cycle-title">Each pair = shareable social content</div>
+        </div>
       </div>
     </div>
   </div>
@@ -850,9 +921,16 @@
 
 <!-- SECTION 6 · TIMELINE -->
 <section id="timeline" class="section">
-  <div class="sec-label">Timeline</div>
-  <h2 class="sec-title">Anchored to June 8 and June 15.</h2>
-  <p class="sec-sub" style="margin-bottom:44px;">Direction sign-off unlocks the build. Everything flows from here.</p>
+  <h2 class="sec-title">Timeline</h2>
+  <div class="timeline-reminder">
+    <span class="timeline-reminder-label">Reminder!</span>
+    <span class="nav-countdown" style="margin-left: 8px;">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>
+      <span class="nav-countdown-label">Time until feedback needed:</span>
+      <span class="nav-countdown-time" id="timeline-countdown-time">—</span>
+    </span>
+  </div>
+  <p class="sec-sub" style="margin-bottom:44px;">Direction sign-off unlocks the build. Everything flows from here. Anchored to June 8 and June 15.</p>
   <div class="timeline-track">
     <div class="timeline-node now"><div class="timeline-dot-wrap"><div class="timeline-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div><div class="timeline-date">Now</div><div class="timeline-event">Direction sign-off</div><div class="timeline-detail">Green light to lock scope and build</div></div>
     <div class="timeline-node key"><div class="timeline-dot-wrap"><div class="timeline-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3" fill="white"/></svg></div></div><div class="timeline-date">June 8</div><div class="timeline-event">All-Network Webinar</div><div class="timeline-detail">Partners see it before clients do</div></div>
@@ -874,14 +952,14 @@
       <div class="ask-card"><div class="ask-number">02</div><div class="ask-question">Is this the right shape?</div><div class="ask-detail">Integrated activation page + Partner Multiplier + Pioneers recognition program. One package, three pillars.</div></div>
       <div class="ask-card"><div class="ask-number">03</div><div class="ask-question">Can we proceed to scoping?</div><div class="ask-detail">Build-ready plan back inside one week. June 8 is the hard anchor — we need to move now.</div></div>
     </div>
-    <div class="dependencies">
+    <div class="dependencies-list">
       <div class="dep-title">Honest dependencies — none block directional sign-off, all need answers to lock scope</div>
-      <div class="dep-grid">
-        <div class="dep-item"><div class="dep-dot"></div><div class="dep-text"><strong>Product's depth-of-response release timing</strong>Most consequential — determines what good prompts look like for page cards.</div></div>
-        <div class="dep-item"><div class="dep-dot"></div><div class="dep-text"><strong>Deep-link with pre-loaded prompt support</strong>If product can deliver, the wow is one click. If not, copy-paste fallback.</div></div>
-        <div class="dep-item"><div class="dep-dot"></div><div class="dep-text"><strong>Asset Builder build path</strong>Canva templates vs. Zapier automation. ~2-week estimate assumes the lighter path.</div></div>
-        <div class="dep-item"><div class="dep-dot"></div><div class="dep-text"><strong>Website hosting and web dev support</strong>Integrated page needs hosting and dev capacity — IA and resourcing TBD with marketing ops and web.</div></div>
-      </div>
+      <ul class="dep-items">
+        <li><strong>Product's depth-of-response release timing</strong><span>Most consequential — determines what good prompts look like for page cards.</span></li>
+        <li><strong>Deep-link with pre-loaded prompt support</strong><span>If product can deliver, the wow is one click. If not, copy-paste fallback.</span></li>
+        <li><strong>Asset Builder build path</strong><span>Canva templates vs. Zapier automation. ~2-week estimate assumes the lighter path.</span></li>
+        <li><strong>Website hosting and web dev support</strong><span>Integrated page needs hosting and dev capacity — IA and resourcing TBD with marketing ops and web.</span></li>
+      </ul>
       <div class="dep-footnote">Newsletter channel also flagged — nurture click rates need validation before locking cadence.</div>
     </div>
   </div>
@@ -1109,21 +1187,24 @@ function tokenize(text) {
 const COUNTDOWN_TARGET = new Date('2026-05-23T04:00:00Z').getTime();
 
 function updateCountdown() {
-  const el = document.getElementById('countdown-time');
-  if (!el) return;
   const diff = COUNTDOWN_TARGET - Date.now();
+  let str;
   if (diff <= 0) {
-    el.textContent = 'feedback window closed';
-    return;
+    str = 'feedback window closed';
+  } else {
+    const days = Math.floor(diff / 86400000);
+    const hours = Math.floor((diff % 86400000) / 3600000);
+    const minutes = Math.floor((diff % 3600000) / 60000);
+    str = '';
+    if (days > 0) str += days + 'd ';
+    if (hours > 0 || days > 0) str += hours + 'h ';
+    str += minutes + 'm';
   }
-  const days = Math.floor(diff / 86400000);
-  const hours = Math.floor((diff % 86400000) / 3600000);
-  const minutes = Math.floor((diff % 3600000) / 60000);
-  let str = '';
-  if (days > 0) str += days + 'd ';
-  if (hours > 0 || days > 0) str += hours + 'h ';
-  str += minutes + 'm';
-  el.textContent = str;
+  const ids = ['countdown-time', 'timeline-countdown-time'];
+  ids.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = str;
+  });
 }
 updateCountdown();
 setInterval(updateCountdown, 30000);
