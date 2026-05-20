@@ -48,12 +48,10 @@
 
     .nav-left { display: flex; align-items: center; gap: 12px; }
 
-    .logo-mark {
-      width: 24px; height: 24px; background: var(--black);
-      border-radius: 4px; display: flex; align-items: center; justify-content: center;
+    .nav-logo {
+      width: 32px; height: 32px;
+      display: block; flex-shrink: 0;
     }
-
-    .logo-mark svg { width: 13px; height: 13px; }
 
     .nav-brand { font-size: 13px; font-weight: 600; color: var(--black); letter-spacing: -0.01em; }
     .nav-divider { width: 1px; height: 16px; background: var(--border); }
@@ -592,9 +590,7 @@
 <!-- NAV -->
 <nav class="site-nav">
   <div class="nav-left">
-    <div class="logo-mark">
-      <svg viewBox="0 0 24 24" fill="none"><path d="M12 3C7.03 3 3 7.03 3 12s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm0 4a3 3 0 110 6 3 3 0 010-6zm0 11c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08A7.02 7.02 0 0112 18z" fill="white"/></svg>
-    </div>
+    <canvas id="nav-pi-logo" class="nav-logo" width="160" height="160" aria-label="PI"></canvas>
     <span class="nav-brand">Open Beta for PI AI</span>
     <div class="nav-divider"></div>
     <span class="nav-badge">Marketing Launch Proposal</span>
@@ -1234,6 +1230,47 @@ function showToast() {
 /* ── INIT ── */
 renderSidebar();
 renderLibrary();
+
+/* ── NAV LOGO ANIMATION (PI pattern) ── */
+(function navLogo() {
+  const canvas = document.getElementById('nav-pi-logo');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const W = 160, H = 160;
+  const centerX = W / 2;
+  const centerY = H / 2;
+  const gap = 32;
+  const dotYs = [
+    centerY - 1.5 * gap,
+    centerY - 0.5 * gap,
+    centerY + 0.5 * gap,
+    centerY + 1.5 * gap,
+  ];
+  const amplitude = 52;
+  const speed = 0.0216;
+  const phaseOffsets = [0, Math.PI / 2, Math.PI, (3 * Math.PI) / 2];
+  let t = 0;
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    const xs = phaseOffsets.map(phase => centerX + amplitude * Math.sin(t + phase));
+    ctx.beginPath();
+    ctx.moveTo(xs[0], dotYs[0]);
+    for (let i = 1; i < 4; i++) ctx.lineTo(xs[i], dotYs[i]);
+    ctx.strokeStyle = '#e81500';
+    ctx.lineWidth = 2;
+    ctx.lineJoin = 'round';
+    ctx.stroke();
+    for (let i = 0; i < 4; i++) {
+      ctx.beginPath();
+      ctx.arc(xs[i], dotYs[i], 5.5, 0, Math.PI * 2);
+      ctx.fillStyle = '#e81500';
+      ctx.fill();
+    }
+    t += speed;
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
 </script>
 
 </body>
