@@ -96,6 +96,53 @@
       margin-bottom: 28px;
     }
 
+    .hero-questions {
+      list-style: none; padding: 0; margin: 0 0 32px;
+      display: flex; flex-direction: column; gap: 8px;
+      max-width: 720px;
+    }
+    .hero-questions li {
+      font-size: 18px; color: var(--black); font-weight: 500;
+      line-height: 1.4; padding-left: 22px;
+      position: relative;
+    }
+    .hero-questions li::before {
+      content: ''; position: absolute;
+      left: 0; top: 10px;
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--lib-primary);
+    }
+
+    .requirements-checklist {
+      list-style: none; padding: 0; margin: 0;
+      display: flex; flex-direction: column; gap: 14px;
+      max-width: 820px;
+    }
+    .requirements-checklist li {
+      display: flex; align-items: flex-start; gap: 16px;
+      padding: 18px 22px;
+      background: var(--white); border: 1px solid var(--border); border-radius: 10px;
+    }
+    .check-mark {
+      width: 24px; height: 24px; border-radius: 6px;
+      background: var(--lib-primary); color: white;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .check-mark svg { width: 14px; height: 14px; }
+    .check-content { flex: 1; }
+    .check-headline {
+      font-size: 15px; font-weight: 600;
+      color: var(--black); line-height: 1.35;
+      margin-bottom: 4px;
+    }
+    .check-body {
+      font-size: 13.5px; color: var(--gray-700);
+      line-height: 1.65;
+    }
+    .check-body em { font-style: italic; }
+
     .hero-nav {
       display: flex; align-items: center; gap: 4px;
       flex-wrap: wrap;
@@ -657,10 +704,10 @@
     <span class="nav-badge">Marketing Launch Proposal</span>
   </div>
   <div class="nav-links">
-    <a href="#summary">Requirements</a>
     <a href="#package">The Package</a>
     <a href="#flywheel">Flywheel</a>
     <a href="#gonogo">Go / No-Go</a>
+    <a href="#summary">Requirements</a>
   </div>
 </nav>
 
@@ -669,41 +716,25 @@
   <div class="hero-inner">
     <div class="hero-eyebrow">Marketing Launch Proposal</div>
     <h1 class="hero-title">Launching Open Beta</h1>
-    <p class="hero-sub">Our approach to launching open beta of PI's AI features.</p>
+    <p class="hero-sub">This is Marketing's launch proposal to answer four questions:</p>
+    <ul class="hero-questions">
+      <li>What is the path to first value?</li>
+      <li>How quickly can we show that value?</li>
+      <li>What's the biggest way in which we can show value?</li>
+      <li>And how do we make this as simple as possible so Partners can too?</li>
+    </ul>
     <div class="hero-nav">
-      <a href="#summary">Requirements</a>
-      <span class="hero-nav-sep">·</span>
       <a href="#package">The Package</a>
       <span class="hero-nav-sep">·</span>
       <a href="#flywheel">Flywheel</a>
       <span class="hero-nav-sep">·</span>
       <a href="#gonogo">Go / No-Go</a>
+      <span class="hero-nav-sep">·</span>
+      <a href="#summary">Requirements</a>
     </div>
   </div>
 </div>
 
-<!-- SECTION 1 · REQUIREMENTS -->
-<section id="summary" class="section">
-  <h2 class="sec-title">Requirements</h2>
-  <p class="sec-sub">The closed beta gave us signal. These insights shape the launch approach.</p>
-  <div class="insight-grid">
-    <div class="insight-card">
-      <div class="insight-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-      <div class="insight-headline">The HR Leader is the audience.</div>
-      <div class="insight-body">The PI Champion is the activator and the carrier. Managers receive her coaching — they're not the <em>primary</em> audience of this package.</div>
-    </div>
-    <div class="insight-card">
-      <div class="insight-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-      <div class="insight-headline">Partners need to look like experts.</div>
-      <div class="insight-body">They can't be expected to be on-the-fly prompt writers. Partners need to feel confident bringing the Assistant into a client engagement.</div>
-    </div>
-    <div class="insight-card">
-      <div class="insight-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-      <div class="insight-headline">Activation is a blank-page problem.</div>
-      <div class="insight-body">Users don't know where to start — which is why live consultative calls have been driving closed beta activation. The package solves that at scale.</div>
-    </div>
-  </div>
-</section>
 
 <!-- SECTION 2 · PACKAGE OVERVIEW -->
 <div id="package" class="section-full section-alt">
@@ -986,6 +1017,35 @@
     </div>
   </div>
 </div>
+
+<!-- SECTION · REQUIREMENTS (closed-beta signal as checklist) -->
+<section id="summary" class="section">
+  <h2 class="sec-title">Requirements</h2>
+  <p class="sec-sub">The closed beta gave us signal. These insights shape the launch approach.</p>
+  <ul class="requirements-checklist">
+    <li>
+      <div class="check-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div class="check-content">
+        <div class="check-headline">The HR Leader is the audience.</div>
+        <div class="check-body">The PI Champion is the activator and the carrier. Managers receive her coaching — they're not the <em>primary</em> audience of this package.</div>
+      </div>
+    </li>
+    <li>
+      <div class="check-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div class="check-content">
+        <div class="check-headline">Partners need to look like experts.</div>
+        <div class="check-body">They can't be expected to be on-the-fly prompt writers. Partners need to feel confident bringing the Assistant into a client engagement.</div>
+      </div>
+    </li>
+    <li>
+      <div class="check-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div class="check-content">
+        <div class="check-headline">Activation is a blank-page problem.</div>
+        <div class="check-body">Users don't know where to start — which is why live consultative calls have been driving closed beta activation. The package solves that at scale.</div>
+      </div>
+    </li>
+  </ul>
+</section>
 
 <!-- FOOTER -->
 <footer class="site-footer">
