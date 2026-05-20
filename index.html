@@ -111,17 +111,6 @@
     .hero-nav a:hover { background: var(--gray-100); color: var(--black); }
     .hero-nav-sep { color: var(--gray-300); font-size: 11px; padding: 0 2px; }
 
-    /* ── COUNTDOWN ─────────────────────────────────── */
-    .nav-countdown {
-      display: inline-flex; align-items: center; gap: 6px;
-      padding: 4px 10px; border-radius: 6px;
-      background: #fff5f5; border: 1px solid #fecdd3;
-      font-size: 11.5px; font-weight: 500; color: #b91c1c;
-      letter-spacing: 0.01em;
-    }
-    .nav-countdown svg { width: 11px; height: 11px; color: #b91c1c; }
-    .nav-countdown-label { color: #b91c1c; opacity: 0.75; font-weight: 500; }
-    .nav-countdown-time { font-weight: 700; font-variant-numeric: tabular-nums; }
 
     /* ── SHARED ──────────────────────────────────────── */
     .section { padding: 80px 52px; max-width: 1304px; margin: 0 auto; }
@@ -530,15 +519,6 @@
     .pos-8 { grid-row: 1; grid-column: 1; }
     .cycle-hub-wrap { grid-row: 2; grid-column: 2; display: flex; align-items: center; justify-content: center; }
 
-    /* ── TIMELINE REMINDER ─────────────────────────── */
-    .timeline-reminder {
-      display: flex; align-items: center; gap: 4px;
-      margin: 0 0 18px;
-    }
-    .timeline-reminder-label {
-      font-size: 14px; font-weight: 600; color: var(--lib-primary);
-    }
-
     /* ── SECTION 6 · TIMELINE ─────────────────────────── */
     .timeline-track { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0; position: relative; }
     .timeline-track::before { content: ''; position: absolute; top: 14px; left: 14px; right: 14px; height: 1px; background: var(--border); z-index: 0; }
@@ -598,7 +578,6 @@
       .cycle-hub { width: 40%; }
       .cycle-step { padding: 12px 14px; min-height: auto; }
       .cycle-title { font-size: 13px; }
-      .nav-countdown .nav-countdown-label { display: none; }
       .timeline-track { grid-template-columns: repeat(3, 1fr); }
       .timeline-track::before { display: none; }
       .ask-questions { grid-template-columns: 1fr; }
@@ -618,11 +597,7 @@
     </div>
     <span class="nav-brand">Open Beta for PI AI</span>
     <div class="nav-divider"></div>
-    <span class="nav-countdown" id="nav-countdown" title="Time until feedback is needed (Friday May 22, midnight ET)">
-      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>
-      <span class="nav-countdown-label">Time until feedback needed:</span>
-      <span class="nav-countdown-time" id="countdown-time">—</span>
-    </span>
+    <span class="nav-badge">Marketing Launch Proposal</span>
   </div>
   <div class="nav-links">
     <a href="#summary">Requirements</a>
@@ -676,25 +651,25 @@
 <!-- SECTION 2 · PACKAGE OVERVIEW -->
 <div id="package" class="section-full section-alt">
   <div class="section-full-inner">
-    <div class="sec-label">The Package</div>
-    <h2 class="sec-title">Launch Package Contents: Open Beta</h2>
-    <p class="sec-sub">Marketing owns the package end-to-end. Each pillar reinforces the others.</p>
+    <div class="sec-label">Launch Package</div>
+    <h2 class="sec-title">Open Beta Launch Assets</h2>
+    <p class="sec-sub">Marketing owns the package end-to-end. Each asset reinforces the others.</p>
     <div class="pillar-overview-grid">
       <div class="pillar-overview-card">
         <div class="pillar-number">01</div>
-        <div class="pillar-overview-title">The Activation Engine</div>
+        <div class="pillar-overview-title">Marketing Site & Prompt Library</div>
         <div class="pillar-overview-hook">Where wow happens.</div>
         <div class="pillar-overview-desc">One integrated PI Assistant page does the work of a prompt library, a customer story feed, and a first-prompt onboarding rail.</div>
       </div>
       <div class="pillar-overview-card">
         <div class="pillar-number">02</div>
-        <div class="pillar-overview-title">The Partner Multiplier</div>
+        <div class="pillar-overview-title">Branded Partner Enablement</div>
         <div class="pillar-overview-hook">How partners deliver wow.</div>
         <div class="pillar-overview-desc">A self-serve Partner Asset Builder gives every partner a co-branded kit, so they show up to client conversations equipped and confident.</div>
       </div>
       <div class="pillar-overview-card">
         <div class="pillar-number">03</div>
-        <div class="pillar-overview-title">Recognition & GA Seedlings</div>
+        <div class="pillar-overview-title">Social Proof and Recognition</div>
         <div class="pillar-overview-hook">How wow becomes story.</div>
         <div class="pillar-overview-desc">A partner-nominated recognition program for HR Leaders driving real AI-in-HR results — seeds the prompt library, social proof, and the GA narrative.</div>
       </div>
@@ -705,7 +680,7 @@
 <!-- SECTION 3 · PILLAR 1 -->
 <div id="poc" class="section-full">
   <div class="section-full-inner">
-    <div class="sec-label">Pillar 01 · The Activation Engine</div>
+    <div class="sec-label">01 · The Activation Engine</div>
     <h2 class="sec-title">Marketing Site & Prompt Library</h2>
     <p class="poc-subhead">This is a low-fidelity mockup of how a PI prompt library would behave. The real thing would look more engaging — this is a proof of concept.</p>
 
@@ -750,7 +725,7 @@
 
 <!-- SECTION 4 · PILLAR 2 -->
 <section id="partner" class="section">
-  <div class="sec-label">Pillar 02 · The Partner Multiplier</div>
+  <div class="sec-label">02 · Branded Partner Enablement</div>
   <h2 class="sec-title">Partner Assets: Branded</h2>
   <div class="partner-intro">
     <p class="sec-sub" style="margin-bottom:0;">A self-serve Partner Asset Builder generates each partner's co-branded enablement kit — so every partner shows up to client conversations equipped and confident.</p>
@@ -865,7 +840,7 @@
 <!-- SECTION 5 · FLYWHEEL -->
 <div id="flywheel" class="section-full section-alt">
   <div class="section-full-inner">
-    <div class="sec-label">Pillar 03 · The Customer Marketing Engine</div>
+    <div class="sec-label">03 · Social Proof and Recognition</div>
     <h2 class="sec-title">Open Beta Launch Flywheel</h2>
     <p class="sec-sub">Every customer prompt becomes a story; every story drives the next activation. A self-reinforcing cycle the launch package is designed to start.</p>
 
@@ -922,14 +897,6 @@
 <!-- SECTION 6 · TIMELINE -->
 <section id="timeline" class="section">
   <h2 class="sec-title">Timeline</h2>
-  <div class="timeline-reminder">
-    <span class="timeline-reminder-label">Reminder!</span>
-    <span class="nav-countdown" style="margin-left: 8px;">
-      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>
-      <span class="nav-countdown-label">Time until feedback needed:</span>
-      <span class="nav-countdown-time" id="timeline-countdown-time">—</span>
-    </span>
-  </div>
   <p class="sec-sub" style="margin-bottom:44px;">Direction sign-off unlocks the build. Everything flows from here. Anchored to June 8 and June 15.</p>
   <div class="timeline-track">
     <div class="timeline-node now"><div class="timeline-dot-wrap"><div class="timeline-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div><div class="timeline-date">Now</div><div class="timeline-event">Direction sign-off</div><div class="timeline-detail">Green light to lock scope and build</div></div>
@@ -1181,33 +1148,6 @@ function tokenize(text) {
   return text.replace(/\{\{([^}]+)\}\}/g, '<span class="lib-token">$1</span>');
 }
 
-/* ── COUNTDOWN ── */
-// Target: midnight at the END of Friday May 22, 2026 Eastern Time (EDT = UTC-4)
-// = 2026-05-23 00:00:00 EDT = 2026-05-23 04:00:00 UTC
-const COUNTDOWN_TARGET = new Date('2026-05-23T04:00:00Z').getTime();
-
-function updateCountdown() {
-  const diff = COUNTDOWN_TARGET - Date.now();
-  let str;
-  if (diff <= 0) {
-    str = 'feedback window closed';
-  } else {
-    const days = Math.floor(diff / 86400000);
-    const hours = Math.floor((diff % 86400000) / 3600000);
-    const minutes = Math.floor((diff % 3600000) / 60000);
-    str = '';
-    if (days > 0) str += days + 'd ';
-    if (hours > 0 || days > 0) str += hours + 'h ';
-    str += minutes + 'm';
-  }
-  const ids = ['countdown-time', 'timeline-countdown-time'];
-  ids.forEach(id => {
-    const el = document.getElementById(id);
-    if (el) el.textContent = str;
-  });
-}
-updateCountdown();
-setInterval(updateCountdown, 30000);
 
 /* ── RENDER SIDEBAR ── */
 function renderSidebar() {
