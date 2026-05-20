@@ -154,7 +154,7 @@
 
     /* ── POC SECTION (dark gradient) ─────────────────── */
     #poc {
-      background: linear-gradient(180deg, #1d1d28 0%, #29263a 100%);
+      background: linear-gradient(180deg, #0a0a12 0%, #15131e 60%, #0d0c14 100%);
       color: var(--white);
     }
     #poc .sec-label { color: var(--lib-primary); }
@@ -200,16 +200,20 @@
     .lib-topbar {
       background: #ffffff;
       border-bottom: 1px solid #e2e8f0;
-      padding: 12px 20px;
+      padding: 18px 24px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       flex-shrink: 0;
-      gap: 16px;
+      gap: 20px;
     }
 
-    .lib-topbar-left h3 { font-size: 13.5px; font-weight: 700; color: #0f172a; }
-    .lib-topbar-left p { font-size: 11px; color: #64748b; margin-top: 2px; }
+    .lib-topbar-left h3 { font-size: 22px; font-weight: 700; color: #0f172a; letter-spacing: -0.02em; line-height: 1.15; }
+    .lib-topbar-left p { font-size: 12.5px; color: #64748b; margin-top: 6px; line-height: 1.55; max-width: 560px; }
+    .lib-topbar-left .lock-icon {
+      display: inline-block; width: 11px; height: 11px;
+      color: #9ca3af; vertical-align: -1px; margin-left: 4px;
+    }
 
     .lib-search-bar { position: relative; width: 260px; }
     .lib-search-bar input {
@@ -248,26 +252,57 @@
 
     .lib-scroll { flex: 1; overflow-y: auto; padding: 20px 24px; background: #f8fafc; scroll-behavior: smooth; }
 
-    /* Use-case sections */
-    .lib-uc { margin-bottom: 36px; }
+    /* Use-case sections (per-section accent via CSS var) */
+    .lib-uc { margin-bottom: 40px; --accent: var(--lib-primary); --accent-soft: rgba(239,51,64,0.08); }
     .lib-uc:last-child { margin-bottom: 8px; }
+    .lib-uc.accent-red    { --accent: #ef3340; --accent-soft: rgba(239,51,64,0.07); }
+    .lib-uc.accent-blue   { --accent: #2563eb; --accent-soft: rgba(37,99,235,0.07); }
+    .lib-uc.accent-purple { --accent: #7c3aed; --accent-soft: rgba(124,58,237,0.07); }
 
-    .lib-uc-head { margin-bottom: 12px; }
-    .lib-uc-num { font-size: 10px; font-weight: 700; color: var(--lib-primary); letter-spacing: 0.08em; margin-bottom: 6px; }
-    .lib-uc-title { font-size: 17px; font-weight: 700; color: #0f172a; letter-spacing: -0.015em; margin-bottom: 4px; line-height: 1.25; }
+    .lib-uc-head { margin-bottom: 14px; }
+    .lib-uc-num { font-size: 10px; font-weight: 700; color: var(--accent); letter-spacing: 0.08em; margin-bottom: 6px; }
+    .lib-uc-title { font-size: 18px; font-weight: 700; color: #0f172a; letter-spacing: -0.015em; margin-bottom: 4px; line-height: 1.25; }
     .lib-uc-problem { font-size: 12.5px; color: #64748b; font-weight: 400; line-height: 1.6; }
 
+    /* Speech-bubble quote */
     .lib-uc-quote {
-      background: #fff5f5; border: 1px solid #fecdd3;
-      border-left: 3px solid var(--lib-primary);
-      border-radius: 8px; padding: 14px 18px; margin-bottom: 14px;
+      position: relative;
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 18px 22px 16px;
+      margin: 0 0 26px 6px;
+      filter: drop-shadow(0 3px 10px rgba(15,23,42,0.06));
+      border-left: 3px solid var(--accent);
+      max-width: 94%;
+    }
+    .lib-uc-quote::after {
+      content: ''; position: absolute;
+      bottom: -10px; left: 26px;
+      width: 18px; height: 12px;
+      background: #ffffff;
+      clip-path: polygon(0 0, 100% 0, 25% 100%);
     }
     .lib-uc-quote-text {
-      font-family: 'Roboto Serif', Georgia, serif;
-      font-style: italic; font-size: 13.5px; color: #374151;
-      line-height: 1.65; margin-bottom: 6px;
+      font-family: 'Inter', system-ui, sans-serif;
+      font-style: normal;
+      font-size: 15.5px;
+      font-weight: 500;
+      color: #0f172a;
+      line-height: 1.5;
+      letter-spacing: -0.005em;
+      margin-bottom: 10px;
     }
-    .lib-uc-quote-attr { font-size: 11px; color: #9ca3af; font-weight: 500; }
+    .lib-uc-quote-attr {
+      font-size: 11.5px; color: #6b7280; font-weight: 500;
+      letter-spacing: 0.01em;
+    }
+    /* Per-accent card border tinge */
+    .lib-uc.accent-red    .lib-card-new:hover { border-color: rgba(239,51,64,0.22); }
+    .lib-uc.accent-blue   .lib-card-new:hover { border-color: rgba(37,99,235,0.22); }
+    .lib-uc.accent-purple .lib-card-new:hover { border-color: rgba(124,58,237,0.22); }
+    .lib-uc.accent-red    .lib-card-cat { color: #ef3340; }
+    .lib-uc.accent-blue   .lib-card-cat { color: #2563eb; }
+    .lib-uc.accent-purple .lib-card-cat { color: #7c3aed; }
 
     .lib-uc-prompts {
       display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;
@@ -276,28 +311,56 @@
     /* Prompt cards */
     .lib-card-new {
       background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px;
-      padding: 14px 16px; display: flex; flex-direction: column; gap: 5px;
+      padding: 14px 16px; display: flex; flex-direction: column; gap: 6px;
       box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-      transition: box-shadow 0.2s, transform 0.15s;
+      transition: box-shadow 0.2s, transform 0.15s, border-color 0.2s;
+      position: relative; overflow: hidden;
     }
-    .lib-card-new:hover { box-shadow: 0 4px 14px rgba(0,0,0,0.08); transform: translateY(-1px); }
+    .lib-card-new::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(
+        110deg,
+        transparent 30%,
+        rgba(239, 51, 64, 0.05) 45%,
+        rgba(255, 255, 255, 0.7) 50%,
+        rgba(239, 51, 64, 0.05) 55%,
+        transparent 70%
+      );
+      transform: translateX(-100%);
+      transition: transform 0.7s ease;
+      pointer-events: none; border-radius: inherit;
+      z-index: 1;
+    }
+    .lib-card-new:hover::before { transform: translateX(100%); }
+    .lib-card-new:hover {
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+      transform: translateY(-1px);
+      border-color: rgba(239,51,64,0.2);
+    }
+    .lib-card-new > * { position: relative; z-index: 2; }
 
-    .lib-card-top {
-      display: flex; align-items: center; justify-content: space-between; gap: 6px;
-    }
     .lib-card-cat {
       font-size: 10px; font-weight: 600; text-transform: uppercase;
       color: var(--lib-primary); letter-spacing: 0.05em;
     }
-    .lib-card-copy {
-      background: none; border: none; cursor: pointer; padding: 2px;
-      color: #d1d5db; flex-shrink: 0; transition: color 0.15s; line-height: 1;
-    }
-    .lib-card-copy:hover { color: #6b7280; }
-    .lib-card-copy svg { width: 13px; height: 13px; display: block; }
-
     .lib-card-title-new { font-size: 13px; font-weight: 600; color: #0f172a; line-height: 1.3; }
-    .lib-card-display { font-size: 12.5px; color: #64748b; line-height: 1.7; }
+    .lib-card-display { font-size: 12.5px; color: #64748b; line-height: 1.7; flex: 1; }
+
+    .lib-copy-cta {
+      align-self: flex-start;
+      display: inline-flex; align-items: center; gap: 5px;
+      margin-top: 6px;
+      padding: 6px 11px;
+      background: transparent; border: 1px solid #e2e8f0; border-radius: 7px;
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 11.5px; font-weight: 600; color: #475569;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s, border-color 0.15s;
+    }
+    .lib-copy-cta:hover {
+      background: #0f172a; color: #fff; border-color: #0f172a;
+    }
+    .lib-copy-cta svg { width: 11px; height: 11px; }
 
     .lib-token {
       display: inline; background: #eff6ff; color: #2563eb;
@@ -696,7 +759,7 @@
         <div class="lib-topbar">
           <div class="lib-topbar-left">
             <h3>PI Prompt Library</h3>
-            <p>Organized by what HR leaders actually need to do — grounded in PI behavioral science.</p>
+            <p>Embed HR in every people decision across your organization — grounded in PI behavioral science.<svg class="lock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></p>
           </div>
           <div class="lib-search-bar">
             <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
@@ -1168,22 +1231,22 @@ function jumpToUseCase(id) {
 function promptCardHTML(p) {
   const safePrompt = p.prompt.replace(/`/g, '\\`').replace(/\$/g, '\\$');
   return `<div class="lib-card-new">
-    <div class="lib-card-top">
-      <div class="lib-card-cat">${p.category}</div>
-      <button class="lib-card-copy" onclick="copyPrompt(\`${safePrompt}\`)" title="Copy prompt">
-        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-      </button>
-    </div>
+    <div class="lib-card-cat">${p.category}</div>
     <div class="lib-card-title-new">${p.title}</div>
     <div class="lib-card-display">${tokenize(p.display)}</div>
+    <button class="lib-copy-cta" onclick="copyPrompt(\`${safePrompt}\`)">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+      Copy prompt
+    </button>
   </div>`;
 }
 
 /* ── RENDER LIBRARY ── */
 function renderLibrary() {
   const q = searchQuery.toLowerCase();
+  const accents = ['red', 'blue', 'purple'];
 
-  const sections = USE_CASES.map(uc => {
+  const sections = USE_CASES.map((uc, i) => {
     const filteredPrompts = uc.prompts.filter(p => {
       if (!q) return true;
       return p.title.toLowerCase().includes(q) ||
@@ -1194,8 +1257,9 @@ function renderLibrary() {
     if (q && filteredPrompts.length === 0) return '';
 
     const promptCards = filteredPrompts.map(p => promptCardHTML(p)).join('');
+    const accent = accents[i % 3];
 
-    return `<section class="lib-uc" id="uc-${uc.id}">
+    return `<section class="lib-uc accent-${accent}" id="uc-${uc.id}">
       <div class="lib-uc-head">
         <div class="lib-uc-num">${uc.num}</div>
         <div class="lib-uc-title">${uc.title}</div>
