@@ -109,7 +109,7 @@
     .sec-title { font-size: 34px; font-weight: 700; color: var(--black); line-height: 1.12; letter-spacing: -0.025em; margin-bottom: 12px; }
     .sec-sub { font-size: 16px; color: var(--gray-700); line-height: 1.65; font-weight: 400; max-width: 560px; margin-bottom: 48px; }
 
-    /* ── SECTION 1 · SUMMARY ────────────────────────── */
+    /* ── SECTION 1 · REQUIREMENTS ────────────────────── */
     .insight-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 
     .insight-card {
@@ -120,6 +120,7 @@
     .insight-num { font-size: 11px; font-weight: 600; color: var(--gray-300); letter-spacing: 0.06em; margin-bottom: 14px; }
     .insight-headline { font-size: 15px; font-weight: 600; color: var(--black); margin-bottom: 8px; line-height: 1.35; }
     .insight-body { font-size: 13.5px; color: var(--gray-700); line-height: 1.65; font-weight: 400; }
+    .insight-body em { font-style: italic; }
 
     /* ── SECTION 2 · PACKAGE OVERVIEW ──────────────── */
     .pillar-overview-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
@@ -155,9 +156,9 @@
 
     .poc-chrome-label { font-size: 11px; font-weight: 400; color: #666; letter-spacing: 0.02em; }
 
-    /* ── INLINE PROMPT LIBRARY (sidebar layout) ──────── */
+    /* ── INLINE PROMPT LIBRARY (use-case layout) ──────── */
     .lib-body {
-      height: 620px;
+      height: 720px;
       overflow: hidden;
       background: #f8fafc;
       display: flex;
@@ -173,6 +174,7 @@
       align-items: center;
       justify-content: space-between;
       flex-shrink: 0;
+      gap: 16px;
     }
 
     .lib-topbar-left h3 { font-size: 13.5px; font-weight: 700; color: #0f172a; }
@@ -212,7 +214,7 @@
     .lib-inner { display: flex; flex: 1; overflow: hidden; }
 
     .lib-sidebar {
-      width: 185px; background: #ffffff;
+      width: 200px; background: #ffffff;
       border-right: 1px solid #e2e8f0;
       padding: 16px 12px; overflow-y: auto; flex-shrink: 0;
     }
@@ -224,18 +226,42 @@
 
     .lib-nav-list { list-style: none; }
     .lib-nav-item {
-      padding: 6px 10px; margin-bottom: 2px; border-radius: 6px;
+      padding: 7px 10px; margin-bottom: 2px; border-radius: 6px;
       cursor: pointer; color: #334155; font-size: 12px; font-weight: 500;
       transition: background 0.15s, color 0.15s;
-      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+      line-height: 1.35;
     }
     .lib-nav-item:hover { background: #f1f5f9; }
     .lib-nav-item.active { background: #fff5f5; color: var(--lib-primary); }
 
-    .lib-scroll { flex: 1; overflow-y: auto; padding: 16px; background: #f8fafc; }
+    .lib-scroll { flex: 1; overflow-y: auto; padding: 20px 24px; background: #f8fafc; scroll-behavior: smooth; }
 
-    .lib-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    /* Use-case sections */
+    .lib-uc { margin-bottom: 36px; }
+    .lib-uc:last-child { margin-bottom: 8px; }
 
+    .lib-uc-head { margin-bottom: 12px; }
+    .lib-uc-num { font-size: 10px; font-weight: 700; color: var(--lib-primary); letter-spacing: 0.08em; margin-bottom: 6px; }
+    .lib-uc-title { font-size: 17px; font-weight: 700; color: #0f172a; letter-spacing: -0.015em; margin-bottom: 4px; line-height: 1.25; }
+    .lib-uc-problem { font-size: 12.5px; color: #64748b; font-weight: 400; line-height: 1.6; }
+
+    .lib-uc-quote {
+      background: #fff5f5; border: 1px solid #fecdd3;
+      border-left: 3px solid var(--lib-primary);
+      border-radius: 8px; padding: 14px 18px; margin-bottom: 14px;
+    }
+    .lib-uc-quote-text {
+      font-family: 'Roboto Serif', Georgia, serif;
+      font-style: italic; font-size: 13.5px; color: #374151;
+      line-height: 1.65; margin-bottom: 6px;
+    }
+    .lib-uc-quote-attr { font-size: 11px; color: #9ca3af; font-weight: 500; }
+
+    .lib-uc-prompts {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;
+    }
+
+    /* Prompt cards */
     .lib-card-new {
       background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px;
       padding: 14px 16px; display: flex; flex-direction: column; gap: 5px;
@@ -268,22 +294,9 @@
     }
 
     .lib-empty {
-      grid-column: 1 / -1; text-align: center;
+      text-align: center;
       color: #94a3b8; padding: 40px 0; font-size: 13px;
     }
-
-    .lib-quote-card {
-      grid-column: 1 / -1;
-      background: #fff5f5; border: 1px solid #fecdd3;
-      border-left: 3px solid #ef3340;
-      border-radius: 10px; padding: 16px 20px;
-    }
-    .lib-quote-text {
-      font-family: 'Roboto Serif', Georgia, serif;
-      font-style: italic; font-size: 13px; color: #374151;
-      line-height: 1.65; margin-bottom: 6px;
-    }
-    .lib-quote-attr { font-size: 11px; color: #9ca3af; font-weight: 500; }
 
     /* Toast */
     .lib-toast {
@@ -298,99 +311,114 @@
     }
     .lib-toast.show { transform: translateY(0); opacity: 1; }
 
-    /* Quote / five jobs */
-    .quote-callout { margin-top: 16px; padding: 16px 20px; border-radius: 8px; background: var(--gray-50); border: 1px solid var(--border); border-left: 3px solid var(--gray-300); }
-    .quote-text { font-family: 'Roboto Serif', Georgia, serif; font-style: italic; font-size: 15px; color: var(--black); line-height: 1.6; margin-bottom: 6px; }
-    .quote-attribution { font-size: 11.5px; color: var(--gray-500); font-weight: 500; }
-
-    .five-jobs { margin-top: 14px; background: var(--gray-50); border: 1px solid var(--border); border-radius: 8px; padding: 14px 18px; display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
-    .five-jobs-label { font-size: 11px; font-weight: 500; color: var(--gray-500); white-space: nowrap; }
-    .five-jobs-pills { display: flex; flex-wrap: wrap; gap: 6px; }
-    .five-jobs-pill { font-size: 11.5px; font-weight: 500; color: var(--gray-700); background: var(--white); border: 1px solid var(--border); border-radius: 5px; padding: 3px 10px; }
-
     /* ── SECTION 4 · PARTNER MULTIPLIER ─────────────── */
-    .asset-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .asset-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
     .asset-item { display: flex; flex-direction: column; gap: 10px; }
 
-    .mockup-frame { border-radius: 8px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.1); position: relative; background: #1a1a1a; }
+    .mockup-frame { border-radius: 8px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.08); position: relative; background: #1a1a1a; }
     .mockup-landscape { aspect-ratio: 16/9; }
     .mockup-portrait { aspect-ratio: 3/4; }
     .mockup-square { aspect-ratio: 1/1; }
 
-    .mockup-bg-accent { position: absolute; border-radius: 50%; pointer-events: none; }
     .mockup-pi-strip { position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: var(--red); }
 
-    .partner-logo-badge { position: absolute; display: flex; align-items: center; gap: 4px; }
+    .partner-logo-badge { position: absolute; display: flex; align-items: center; gap: 3px; }
     .partner-logo-mark { border-radius: 2px; background: #2a9d8f; display: flex; align-items: center; justify-content: center; }
     .partner-logo-mark svg { color: white; }
     .partner-logo-name { font-family: 'Inter', system-ui, sans-serif; font-weight: 700; color: white; letter-spacing: 0.04em; text-transform: uppercase; }
 
-    .pi-badge { position: absolute; display: flex; align-items: center; gap: 3px; }
+    .pi-badge { position: absolute; display: flex; align-items: center; gap: 2px; }
     .pi-badge-mark { background: var(--red); border-radius: 2px; display: flex; align-items: center; justify-content: center; }
     .pi-badge-mark svg { color: white; }
     .pi-badge-name { font-family: 'Inter', system-ui, sans-serif; font-weight: 700; color: rgba(255,255,255,0.6); letter-spacing: 0.04em; }
 
-    .mock-line { border-radius: 2px; background: rgba(255,255,255,0.18); position: absolute; }
+    .mock-line { border-radius: 2px; position: absolute; }
 
-    .deck-cover .mockup-bg-accent { width: 70%; height: 100%; top: -20%; right: -15%; background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 65%); }
-    .deck-cover .partner-logo-badge { top: 10%; left: 7%; }
-    .deck-cover .partner-logo-mark { width: 16px; height: 16px; }
-    .deck-cover .partner-logo-mark svg { width: 9px; height: 9px; }
-    .deck-cover .partner-logo-name { font-size: 7px; }
-    .deck-cover .pi-badge { bottom: 12%; right: 7%; }
-    .deck-cover .pi-badge-mark { width: 12px; height: 12px; }
-    .deck-cover .pi-badge-mark svg { width: 7px; height: 7px; }
-    .deck-cover .pi-badge-name { font-size: 6.5px; }
-    .deck-cover .deck-title-line { left: 7%; right: 25%; top: 38%; height: 9%; background: rgba(255,255,255,0.82); border-radius: 2px; position: absolute; }
-    .deck-cover .deck-sub-line { left: 7%; right: 42%; top: 52%; height: 5%; background: rgba(255,255,255,0.28); border-radius: 2px; position: absolute; }
+    /* shared portrait header bar */
+    .asset-item .mockup-frame.mockup-portrait { background: #ffffff; }
+    .doc-header { position: absolute; left: 0; right: 0; top: 0; height: 18%; background: #1a1a1a; }
+    .doc-header.dark-red { background: #1a1a1a; border-bottom: 2px solid var(--red); }
 
-    .onepager { background: #f9f9f9; }
-    .onepager .mockup-bg-accent { width: 140%; height: 38%; top: 0; left: -20%; background: #1a1a1a; border-radius: 0; }
-    .onepager .partner-logo-badge { top: 8%; left: 8%; }
-    .onepager .partner-logo-mark { width: 12px; height: 12px; }
-    .onepager .partner-logo-mark svg { width: 7px; height: 7px; }
-    .onepager .partner-logo-name { font-size: 6px; }
-    .onepager .pi-badge { top: 8%; right: 8%; }
-    .onepager .pi-badge-mark { width: 10px; height: 10px; }
-    .onepager .pi-badge-mark svg { width: 6px; height: 6px; }
-    .onepager .pi-badge-name { font-size: 5.5px; color: rgba(255,255,255,0.6); }
-    .onepager .op-line { position: absolute; border-radius: 2px; left: 8%; right: 8%; background: #ddd; }
-    .onepager .op-line-1 { top: 44%; height: 4%; }
-    .onepager .op-line-2 { top: 51%; height: 3%; right: 30%; }
-    .onepager .op-line-3 { top: 59%; height: 3%; }
-    .onepager .op-line-4 { top: 65%; height: 3%; right: 20%; }
-    .onepager .op-line-5 { top: 72%; height: 3%; right: 45%; }
-    .onepager .op-accent { position: absolute; left: 8%; top: 44%; bottom: 10%; width: 2px; background: #1a1a1a; border-radius: 1px; }
-    .onepager .mockup-pi-strip { background: #111; }
+    /* logo / badge sizing for portrait docs */
+    .mockup-portrait .partner-logo-badge { top: 5%; left: 7%; }
+    .mockup-portrait .partner-logo-mark { width: 11px; height: 11px; }
+    .mockup-portrait .partner-logo-mark svg { width: 6px; height: 6px; }
+    .mockup-portrait .partner-logo-name { font-size: 5.5px; }
+    .mockup-portrait .pi-badge { top: 5%; right: 7%; }
+    .mockup-portrait .pi-badge-mark { width: 10px; height: 10px; }
+    .mockup-portrait .pi-badge-mark svg { width: 6px; height: 6px; }
+    .mockup-portrait .pi-badge-name { font-size: 5.5px; color: rgba(255,255,255,0.7); }
 
-    .zoom-bg .mockup-bg-accent { width: 80%; height: 140%; top: -20%; right: -10%; background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 65%); }
-    .zoom-bg .partner-logo-badge { top: 12%; left: 6%; }
-    .zoom-bg .partner-logo-mark { width: 14px; height: 14px; }
-    .zoom-bg .partner-logo-mark svg { width: 8px; height: 8px; }
-    .zoom-bg .partner-logo-name { font-size: 6.5px; }
-    .zoom-bg .pi-badge { top: 12%; right: 6%; }
-    .zoom-bg .pi-badge-mark { width: 11px; height: 11px; }
-    .zoom-bg .pi-badge-mark svg { width: 6px; height: 6px; }
-    .zoom-bg .pi-badge-name { font-size: 5.5px; }
-    .zoom-bg .zoom-line-1 { left: 6%; right: 40%; top: 55%; height: 9%; background: rgba(255,255,255,0.8); }
-    .zoom-bg .zoom-line-2 { left: 6%; right: 55%; top: 70%; height: 5%; background: rgba(255,255,255,0.22); }
+    /* asset-email — email layout */
+    .asset-email .doc-header { background: #1a1a1a; }
+    .asset-email .email-subject { position: absolute; left: 8%; right: 25%; top: 24%; height: 5%; background: #1a1a1a; border-radius: 2px; }
+    .asset-email .em-line { position: absolute; left: 8%; right: 8%; background: #ddd; border-radius: 2px; }
+    .asset-email .em-line-1 { top: 36%; height: 3%; }
+    .asset-email .em-line-2 { top: 43%; height: 3%; right: 25%; }
+    .asset-email .em-line-3 { top: 50%; height: 3%; }
+    .asset-email .em-line-4 { top: 57%; height: 3%; right: 35%; }
+    .asset-email .em-line-5 { top: 64%; height: 3%; right: 15%; }
+    .asset-email .em-line-6 { top: 71%; height: 3%; right: 40%; }
+    .asset-email .em-line-7 { top: 78%; height: 3%; right: 30%; }
 
-    .social-img { background: #222; }
-    .social-img .mockup-bg-accent { width: 100%; height: 100%; top: -30%; right: -30%; background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 60%); }
-    .social-img .partner-logo-badge { top: 10%; left: 8%; }
-    .social-img .partner-logo-mark { width: 14px; height: 14px; }
-    .social-img .partner-logo-mark svg { width: 8px; height: 8px; }
-    .social-img .partner-logo-name { font-size: 6px; }
-    .social-img .pi-badge { bottom: 10%; right: 8%; }
-    .social-img .pi-badge-mark { width: 12px; height: 12px; }
-    .social-img .pi-badge-mark svg { width: 7px; height: 7px; }
-    .social-img .pi-badge-name { font-size: 5.5px; }
-    .social-img .soc-line-1 { left: 8%; right: 8%; top: 44%; height: 10%; background: rgba(255,255,255,0.82); }
-    .social-img .soc-line-2 { left: 8%; right: 20%; top: 59%; height: 5%; background: rgba(255,255,255,0.3); }
-    .social-img .soc-line-3 { left: 8%; right: 35%; top: 69%; height: 5%; background: rgba(255,255,255,0.3); }
+    /* asset-faq — Q&A layout */
+    .asset-faq .doc-header { background: #1a1a1a; }
+    .asset-faq .faq-q { position: absolute; left: 8%; right: 30%; height: 4%; background: #1a1a1a; border-radius: 2px; }
+    .asset-faq .faq-a { position: absolute; left: 8%; right: 12%; background: #ddd; border-radius: 2px; }
+    .asset-faq .faq-q-1 { top: 28%; }
+    .asset-faq .faq-a-1 { top: 35%; height: 3%; }
+    .asset-faq .faq-a-1b { top: 40%; height: 3%; right: 28%; left: 8%; background: #ddd; border-radius: 2px; position: absolute; }
+    .asset-faq .faq-q-2 { top: 50%; }
+    .asset-faq .faq-a-2 { top: 57%; height: 3%; }
+    .asset-faq .faq-a-2b { top: 62%; height: 3%; right: 35%; left: 8%; background: #ddd; border-radius: 2px; position: absolute; }
+    .asset-faq .faq-q-3 { top: 72%; }
+    .asset-faq .faq-a-3 { top: 79%; height: 3%; right: 20%; }
 
-    .asset-label { font-size: 13px; font-weight: 500; color: var(--black); }
-    .asset-sublabel { font-size: 12px; color: var(--gray-500); margin-top: 1px; }
+    /* asset-deck — landscape deck cover */
+    .asset-deck { background: #1a1a1a; }
+    .asset-deck .mockup-bg-accent { position: absolute; width: 70%; height: 100%; top: -20%; right: -15%; background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 65%); border-radius: 50%; pointer-events: none; }
+    .asset-deck .partner-logo-badge { top: 10%; left: 7%; }
+    .asset-deck .partner-logo-mark { width: 14px; height: 14px; }
+    .asset-deck .partner-logo-mark svg { width: 8px; height: 8px; }
+    .asset-deck .partner-logo-name { font-size: 6px; }
+    .asset-deck .pi-badge { bottom: 14%; right: 7%; top: auto; }
+    .asset-deck .pi-badge-mark { width: 11px; height: 11px; }
+    .asset-deck .pi-badge-mark svg { width: 6px; height: 6px; }
+    .asset-deck .pi-badge-name { font-size: 6px; }
+    .asset-deck .deck-title-line { left: 7%; right: 25%; top: 42%; height: 8%; background: rgba(255,255,255,0.82); border-radius: 2px; position: absolute; }
+    .asset-deck .deck-sub-line { left: 7%; right: 42%; top: 55%; height: 4%; background: rgba(255,255,255,0.28); border-radius: 2px; position: absolute; }
+
+    /* asset-prompts — numbered prompts list */
+    .asset-prompts .doc-header { background: #1a1a1a; }
+    .asset-prompts .pr-row { position: absolute; left: 8%; right: 8%; height: 7%; display: flex; align-items: center; gap: 4%; }
+    .asset-prompts .pr-num { width: 8px; height: 8px; border-radius: 50%; background: var(--red); flex-shrink: 0; }
+    .asset-prompts .pr-text-1 { flex: 1; height: 28%; background: #ddd; border-radius: 2px; }
+    .asset-prompts .pr-text-2 { width: 60%; height: 28%; background: #ddd; border-radius: 2px; }
+    .asset-prompts .pr-1 { top: 28%; }
+    .asset-prompts .pr-2 { top: 40%; }
+    .asset-prompts .pr-3 { top: 52%; }
+    .asset-prompts .pr-4 { top: 64%; }
+    .asset-prompts .pr-5 { top: 76%; }
+
+    /* asset-onepager — HR concerns one-pager */
+    .asset-onepager { background: #ffffff; }
+    .asset-onepager .doc-header { background: #1a1a1a; }
+    .asset-onepager .op-callout {
+      position: absolute; left: 8%; right: 8%; top: 26%; height: 16%;
+      background: #fff5f5; border-left: 2px solid var(--red); border-radius: 3px;
+    }
+    .asset-onepager .op-line {
+      position: absolute; left: 8%; right: 8%; background: #ddd; border-radius: 2px;
+    }
+    .asset-onepager .op-line-1 { top: 48%; height: 3%; }
+    .asset-onepager .op-line-2 { top: 54%; height: 3%; right: 20%; }
+    .asset-onepager .op-line-3 { top: 62%; height: 3%; }
+    .asset-onepager .op-line-4 { top: 68%; height: 3%; right: 30%; }
+    .asset-onepager .op-line-5 { top: 76%; height: 3%; right: 15%; }
+    .asset-onepager .op-line-6 { top: 82%; height: 3%; right: 35%; }
+
+    .asset-label { font-size: 12.5px; font-weight: 600; color: var(--black); line-height: 1.3; }
+    .asset-sublabel { font-size: 11.5px; color: var(--gray-500); margin-top: 2px; line-height: 1.4; }
 
     .partner-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-bottom: 48px; align-items: start; }
     .partner-principle { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 18px; }
@@ -469,7 +497,7 @@
       .hero { padding: 64px 28px 72px; }
       .hero-title { font-size: 38px; }
       .insight-grid, .pillar-overview-grid { grid-template-columns: 1fr 1fr; }
-      .lib-grid { grid-template-columns: 1fr; }
+      .lib-uc-prompts { grid-template-columns: 1fr; }
       .asset-grid { grid-template-columns: repeat(2, 1fr); }
       .partner-intro { grid-template-columns: 1fr; gap: 20px; }
       .flywheel-layout { grid-template-columns: 1fr; }
@@ -495,7 +523,7 @@
     <span class="nav-badge">Open Beta · Launch Proposal</span>
   </div>
   <div class="nav-links">
-    <a href="#summary">Summary</a>
+    <a href="#summary">Requirements</a>
     <a href="#package">The Package</a>
     <a href="#gonogo">Go / No-Go</a>
   </div>
@@ -508,7 +536,7 @@
   <p class="hero-question">"What's happening on a consultative call that gets someone to use the Assistant for the first time — and how do we replicate that in a digital, scalable experience?"</p>
 </div>
 
-<!-- SECTION 1 · SUMMARY -->
+<!-- SECTION 1 · REQUIREMENTS -->
 <section id="summary" class="section">
   <h2 class="sec-title">Requirements</h2>
   <p class="sec-sub">The closed beta gave us signal. These insights shape the launch approach.</p>
@@ -516,7 +544,7 @@
     <div class="insight-card">
       <div class="insight-num">01</div>
       <div class="insight-headline">The HR Leader is the audience.</div>
-      <div class="insight-body">The PI Champion is the buyer, the activator, and the carrier. Managers receive her coaching — they're not the audience of this package.</div>
+      <div class="insight-body">The PI Champion is the activator and the carrier. Managers receive her coaching — they're not the <em>primary</em> audience of this package.</div>
     </div>
     <div class="insight-card">
       <div class="insight-num">02</div>
@@ -582,7 +610,7 @@
         <div class="lib-topbar">
           <div class="lib-topbar-left">
             <h3>PI Prompt Library</h3>
-            <p>Optimized prompts for HR leaders — grounded in PI behavioral science.</p>
+            <p>Organized by what HR leaders actually need to do — grounded in PI behavioral science.</p>
           </div>
           <div class="lib-topbar-right">
             <div class="lib-pi-toggle">
@@ -599,21 +627,15 @@
         <!-- Sidebar + main -->
         <div class="lib-inner">
           <aside class="lib-sidebar">
-            <div class="lib-sidebar-title">Categories</div>
+            <div class="lib-sidebar-title">Use Cases</div>
             <ul class="lib-nav-list" id="lib-nav-list"></ul>
           </aside>
-          <div class="lib-scroll">
-            <div class="lib-grid" id="lib-grid"></div>
+          <div class="lib-scroll" id="lib-scroll">
+            <div id="lib-content"></div>
           </div>
         </div>
       </div>
     </div>
-
-    <div class="quote-callout" style="margin-top:16px;">
-      <div class="quote-text">"I didn't know what to ask until I saw these prompts. Within five minutes I had something I actually sent to my manager."</div>
-      <div class="quote-attribution">— HR Director · Closed beta participant</div>
-    </div>
-
   </div>
 </div>
 
@@ -622,59 +644,106 @@
   <div class="sec-label">Pillar 02 · The Partner Multiplier</div>
   <h2 class="sec-title">Partner Assets: Branded</h2>
   <div class="partner-intro">
-    <p class="sec-sub" style="margin-bottom:0;">A self-serve Partner Asset Builder generates each partner's co-branded kit — so every partner shows up equipped, not just the top ten.</p>
+    <p class="sec-sub" style="margin-bottom:0;">A self-serve Partner Asset Builder generates each partner's co-branded enablement kit — so every partner shows up to client conversations equipped and confident.</p>
     <div>
       <div class="partner-principle"><div class="principle-dot"></div><div class="principle-text"><strong>Templates locked to validated messaging.</strong> Partners swap branding, not headlines.</div></div>
       <div class="partner-principle"><div class="principle-dot"></div><div class="principle-text"><strong>Every partner gets a kit.</strong> Not just the ones with dedicated marketing support.</div></div>
-      <div class="partner-principle"><div class="principle-dot"></div><div class="principle-text"><strong>No bespoke marketing labor.</strong> Partners self-serve on their timeline.</div></div>
+      <div class="partner-principle"><div class="principle-dot"></div><div class="principle-text"><strong>Addresses real HR fears.</strong> Privacy, data ownership, AI tracking — all covered.</div></div>
     </div>
   </div>
 
   <div class="asset-grid">
+
+    <!-- 1. Beta email copy for partners -->
     <div class="asset-item">
-      <div class="mockup-frame mockup-landscape deck-cover">
+      <div class="mockup-frame mockup-portrait asset-email">
+        <div class="doc-header"></div>
+        <div class="partner-logo-badge"><div class="partner-logo-mark"><svg viewBox="0 0 10 10" fill="none"><polygon points="5,1 9,8 1,8" fill="white" opacity="0.9"/></svg></div><span class="partner-logo-name">Apex</span></div>
+        <div class="pi-badge"><div class="pi-badge-mark"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3C7.03 3 3 7.03 3 12s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm0 4a3 3 0 110 6 3 3 0 010-6zm0 11c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08A7.02 7.02 0 0112 18z" fill="white"/></svg></div><span class="pi-badge-name">PI</span></div>
+        <div class="email-subject"></div>
+        <div class="em-line em-line-1"></div>
+        <div class="em-line em-line-2"></div>
+        <div class="em-line em-line-3"></div>
+        <div class="em-line em-line-4"></div>
+        <div class="em-line em-line-5"></div>
+        <div class="em-line em-line-6"></div>
+        <div class="em-line em-line-7"></div>
+        <div class="mockup-pi-strip"></div>
+      </div>
+      <div class="asset-label">Beta email copy for partners</div>
+      <div class="asset-sublabel">Includes a suggested client-facing message</div>
+    </div>
+
+    <!-- 2. AI Assistant Enablement FAQ -->
+    <div class="asset-item">
+      <div class="mockup-frame mockup-portrait asset-faq">
+        <div class="doc-header"></div>
+        <div class="partner-logo-badge"><div class="partner-logo-mark"><svg viewBox="0 0 10 10" fill="none"><polygon points="5,1 9,8 1,8" fill="white" opacity="0.9"/></svg></div><span class="partner-logo-name">Apex</span></div>
+        <div class="pi-badge"><div class="pi-badge-mark"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3C7.03 3 3 7.03 3 12s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm0 4a3 3 0 110 6 3 3 0 010-6zm0 11c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08A7.02 7.02 0 0112 18z" fill="white"/></svg></div><span class="pi-badge-name">PI</span></div>
+        <div class="faq-q faq-q-1"></div>
+        <div class="faq-a faq-a-1"></div>
+        <div class="faq-a-1b"></div>
+        <div class="faq-q faq-q-2"></div>
+        <div class="faq-a faq-a-2"></div>
+        <div class="faq-a-2b"></div>
+        <div class="faq-q faq-q-3"></div>
+        <div class="faq-a faq-a-3"></div>
+        <div class="mockup-pi-strip"></div>
+      </div>
+      <div class="asset-label">AI Enablement FAQ</div>
+      <div class="asset-sublabel">AI logic, data ownership, privacy, and pricing</div>
+    </div>
+
+    <!-- 3. Lunch 'n Learn deck -->
+    <div class="asset-item">
+      <div class="mockup-frame mockup-portrait asset-deck">
         <div class="mockup-bg-accent"></div>
         <div class="partner-logo-badge"><div class="partner-logo-mark"><svg viewBox="0 0 10 10" fill="none"><polygon points="5,1 9,8 1,8" fill="white" opacity="0.9"/></svg></div><span class="partner-logo-name">Apex</span></div>
-        <div class="deck-title-line"></div><div class="deck-sub-line"></div>
+        <div class="deck-title-line"></div>
+        <div class="deck-sub-line"></div>
         <div class="pi-badge"><div class="pi-badge-mark"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3C7.03 3 3 7.03 3 12s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm0 4a3 3 0 110 6 3 3 0 010-6zm0 11c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08A7.02 7.02 0 0112 18z" fill="white"/></svg></div><span class="pi-badge-name">PI</span></div>
         <div class="mockup-pi-strip"></div>
       </div>
-      <div class="asset-label">Presentation deck</div>
-      <div class="asset-sublabel">Client-ready slide template</div>
+      <div class="asset-label">Lunch 'n Learn deck</div>
+      <div class="asset-sublabel">"Scaling your expertise" — updated narrative</div>
     </div>
+
+    <!-- 4. Manager Prompts doc -->
     <div class="asset-item">
-      <div class="mockup-frame mockup-portrait onepager">
-        <div class="mockup-bg-accent"></div>
+      <div class="mockup-frame mockup-portrait asset-prompts">
+        <div class="doc-header"></div>
         <div class="partner-logo-badge"><div class="partner-logo-mark"><svg viewBox="0 0 10 10" fill="none"><polygon points="5,1 9,8 1,8" fill="white" opacity="0.9"/></svg></div><span class="partner-logo-name">Apex</span></div>
         <div class="pi-badge"><div class="pi-badge-mark"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3C7.03 3 3 7.03 3 12s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm0 4a3 3 0 110 6 3 3 0 010-6zm0 11c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08A7.02 7.02 0 0112 18z" fill="white"/></svg></div><span class="pi-badge-name">PI</span></div>
-        <div class="op-accent"></div><div class="op-line op-line-1"></div><div class="op-line op-line-2"></div><div class="op-line op-line-3"></div><div class="op-line op-line-4"></div><div class="op-line op-line-5"></div>
+        <div class="pr-row pr-1"><div class="pr-num"></div><div class="pr-text-1"></div></div>
+        <div class="pr-row pr-2"><div class="pr-num"></div><div class="pr-text-2"></div></div>
+        <div class="pr-row pr-3"><div class="pr-num"></div><div class="pr-text-1"></div></div>
+        <div class="pr-row pr-4"><div class="pr-num"></div><div class="pr-text-2"></div></div>
+        <div class="pr-row pr-5"><div class="pr-num"></div><div class="pr-text-1"></div></div>
         <div class="mockup-pi-strip"></div>
       </div>
-      <div class="asset-label">One-pager</div>
-      <div class="asset-sublabel">Leave-behind for client meetings</div>
+      <div class="asset-label">Manager Prompts doc</div>
+      <div class="asset-sublabel">16 ready-to-use behaviorally-grounded prompts</div>
     </div>
+
+    <!-- 5. What HR Needs to Know one-pager -->
     <div class="asset-item">
-      <div class="mockup-frame mockup-landscape zoom-bg">
-        <div class="mockup-bg-accent"></div>
+      <div class="mockup-frame mockup-portrait asset-onepager">
+        <div class="doc-header"></div>
         <div class="partner-logo-badge"><div class="partner-logo-mark"><svg viewBox="0 0 10 10" fill="none"><polygon points="5,1 9,8 1,8" fill="white" opacity="0.9"/></svg></div><span class="partner-logo-name">Apex</span></div>
         <div class="pi-badge"><div class="pi-badge-mark"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3C7.03 3 3 7.03 3 12s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm0 4a3 3 0 110 6 3 3 0 010-6zm0 11c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08A7.02 7.02 0 0112 18z" fill="white"/></svg></div><span class="pi-badge-name">PI</span></div>
-        <div class="mock-line zoom-line-1"></div><div class="mock-line zoom-line-2"></div>
+        <div class="op-callout"></div>
+        <div class="op-line op-line-1"></div>
+        <div class="op-line op-line-2"></div>
+        <div class="op-line op-line-3"></div>
+        <div class="op-line op-line-4"></div>
+        <div class="op-line op-line-5"></div>
+        <div class="op-line op-line-6"></div>
         <div class="mockup-pi-strip"></div>
       </div>
-      <div class="asset-label">Zoom background</div>
-      <div class="asset-sublabel">Branded for virtual calls</div>
+      <div class="asset-label">"What HR Needs to Know"</div>
+      <div class="asset-sublabel">Addresses AI tracking, data use, and control fears</div>
     </div>
-    <div class="asset-item">
-      <div class="mockup-frame mockup-square social-img">
-        <div class="mockup-bg-accent"></div>
-        <div class="partner-logo-badge"><div class="partner-logo-mark"><svg viewBox="0 0 10 10" fill="none"><polygon points="5,1 9,8 1,8" fill="white" opacity="0.9"/></svg></div><span class="partner-logo-name">Apex</span></div>
-        <div class="pi-badge"><div class="pi-badge-mark"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3C7.03 3 3 7.03 3 12s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm0 4a3 3 0 110 6 3 3 0 010-6zm0 11c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08A7.02 7.02 0 0112 18z" fill="white"/></svg></div><span class="pi-badge-name">PI</span></div>
-        <div class="mock-line soc-line-1"></div><div class="mock-line soc-line-2"></div><div class="mock-line soc-line-3"></div>
-        <div class="mockup-pi-strip"></div>
-      </div>
-      <div class="asset-label">Social image</div>
-      <div class="asset-sublabel">Partner-shareable content</div>
-    </div>
+
   </div>
 </section>
 
@@ -762,172 +831,207 @@
 <div class="lib-toast" id="lib-toast">Prompt copied to clipboard!</div>
 
 <script>
-/* ── DATA ── */
-const PROMPTS = [
+/* ── DATA: use cases tied to PI Assistant messaging ── */
+const USE_CASES = [
   {
-    title: "Behavioral Feedback Script",
-    desc: "Generates a script for delivering difficult feedback in a way the employee can actually hear.",
-    category: "Coaching & Feedback",
-    display: "Write constructive feedback for {{Employee Name}}. Calibrate tone to {{situation severity}} and tailor the script to minimize defensiveness.",
-    prompt: `Help me write constructive feedback for an employee.\n\nFirst, ask for the employee's name and the feedback to deliver. Also ask: "What is the relationship context here — are you their direct manager, a peer, or an HR partner facilitating this on someone's behalf?"\n\nThen ask: "How severe is this situation — is this a first nudge or a serious performance conversation?" Then look up their behavioral style and create a clear feedback script tailored to minimize defensiveness.\n\nDeliverables:\n1. The Script: A draft crafted to minimize defensiveness based on the employee's drives.\n2. The Flex Strategy: Specific advice on how I should stretch my own drives.`
+    id: "conversations",
+    num: "USE CASE 01",
+    title: "High-Stakes Conversations",
+    problem: "When a separation, performance issue, or difficult feedback can't wait — every word counts.",
+    quote: {
+      text: "I had a separation conversation Monday morning and didn't have time to think. PI Assistant gave me a script grounded in his behavioral drives in two minutes. The conversation went smoother than I had any right to expect.",
+      attr: "VP People · Mid-market SaaS · Closed beta"
+    },
+    prompts: [
+      {
+        title: "Behavioral Feedback Script",
+        category: "Coaching & Feedback",
+        display: "Write constructive feedback for {{Employee Name}}. Calibrate tone to {{situation severity}} and tailor the script to minimize defensiveness.",
+        prompt: `Help me write constructive feedback for an employee.\n\nFirst, ask for the employee's name and the feedback to deliver. Also ask: "What is the relationship context here — are you their direct manager, a peer, or an HR partner facilitating this on someone's behalf?"\n\nThen ask: "How severe is this situation — is this a first nudge or a serious performance conversation?" Then look up their behavioral style and create a clear feedback script tailored to minimize defensiveness.\n\nDeliverables:\n1. The Script: A draft crafted to minimize defensiveness based on the employee's drives.\n2. The Flex Strategy: Specific advice on how I should stretch my own drives.`
+      },
+      {
+        title: "Prepare for Conflict Resolution",
+        category: "Coaching & Feedback",
+        display: "Build a mediation guide for friction between {{Person A}} and {{Person B}} — with bridge language for each stage.",
+        prompt: `I want to prepare for a conflict resolution session between two people.\n\nFirst, ask me for the Names of the two people and a brief description of the friction.\n\nThen look up both behavioral patterns and map where their Factor placements are clashing.\n\nDeliverables: A structured 3–4-stage mediation agenda with "Bridge Language" for each stage.`
+      },
+      {
+        title: "Tailor Employee Message",
+        category: "Coaching & Feedback",
+        display: "Draft a {{channel}} message to {{Employee Name}} written to land with their behavioral drives.",
+        prompt: `I want to tailor a message to a specific employee.\n\nAsk me for the Employee's Name, the Goal of the Message, and the channel (email, DM, in person).\n\nDeliver a behaviorally-tailored draft message.`
+      },
+      {
+        title: "Crisis Communication Plan",
+        category: "Team Dynamics",
+        display: "Build a crisis communication plan for {{Team Name}} during {{stressor}}, addressing behavioral needs.",
+        prompt: `I want a crisis communication plan.\n\nAsk me for the Team Name and the Nature of the Stressor.\n\nDeliver a crisis communication plan addressing the team's specific behavioral needs.`
+      }
+    ]
   },
   {
-    title: "Candidate Fit & Stretch Analysis",
-    desc: "A deep-dive comparison of a candidate's drives against a Job Target, highlighting natural strengths and areas of behavioral flex.",
-    category: "Talent Acquisition",
-    display: "Analyze {{Candidate Name}}'s behavioral fit and stretch against the {{Job Target}}.",
-    prompt: `I want to analyze candidate fit and identify behavioral strengths and stretches for a specific role.\n\nFirst, ask me for the Candidate's Name.\n\nThen look up the candidate's Behavioral Assessment and Job Target. Evaluate their natural pattern against the role by Factor.\n\nDeliverables:\n1. Natural Alignments: Where the candidate's drives are a perfect match.\n2. Behavioral Stretches: Where the candidate falls outside the target range.`
+    id: "hiring",
+    num: "USE CASE 02",
+    title: "Hiring with Confidence",
+    problem: "When a hiring decision needs more than a gut check — and your panel needs to walk in aligned.",
+    quote: {
+      text: "My team was running interviews without consistent prep. Now every panel walks in with a candidate-specific question guide mapped to the Job Target. We've cut hiring drift in half.",
+      attr: "Director of Talent · Healthcare network · Closed beta"
+    },
+    prompts: [
+      {
+        title: "Candidate Fit & Stretch Analysis",
+        category: "Talent Acquisition",
+        display: "Analyze {{Candidate Name}}'s behavioral fit and stretch against the {{Job Target}}.",
+        prompt: `I want to analyze candidate fit and identify behavioral strengths and stretches for a specific role.\n\nFirst, ask me for the Candidate's Name.\n\nThen look up the candidate's Behavioral Assessment and Job Target. Evaluate their natural pattern against the role by Factor.\n\nDeliverables:\n1. Natural Alignments: Where the candidate's drives are a perfect match.\n2. Behavioral Stretches: Where the candidate falls outside the target range.`
+      },
+      {
+        title: "Interview Prep & Panel Briefing",
+        category: "Talent Acquisition",
+        display: "Generate 5 gap-based interview questions for {{Candidate Name}} with a Look-For guide for each.",
+        prompt: `I want to prepare for a behaviorally-informed interview.\n\nAsk me for the Candidate's Name.\n\nDeliver 5 targeted behavioral interview questions probing specific gaps, each with a "Look-For" guide.`
+      }
+    ]
   },
   {
-    title: "Analyze Team Dynamics & Gaps",
-    desc: "Reveals how your team's collective drives align with your current goals — and what's missing.",
-    category: "Team Dynamics",
-    display: "Analyze {{Team Name}}'s collective drives and identify the behavioral gaps holding them back.",
-    prompt: `I want to analyze my team's dynamics and identify behavioral gaps.\n\nFirst, ask me for the Team Name. Then ask:\n1. "What is the main goal this team is currently driving toward?"\n2. "What are the biggest obstacles impacting the team?"\n\nThen look up the team's Team Type and individual behavioral patterns.\n\nDeliverables: A summary of the team's work style and the "Missing Drive" explanation.`
+    id: "onboarding",
+    num: "USE CASE 03",
+    title: "Onboarding That Actually Works",
+    problem: "When the first 90 days set the trajectory — and generic onboarding plans don't.",
+    quote: {
+      text: "Onboarding used to be the same generic plan for every hire. Now each new manager gets a 30-60-90 built on their behavioral style — with three landmines flagged before they hit them.",
+      attr: "HR Manager · Logistics company · Closed beta"
+    },
+    prompts: [
+      {
+        title: "Onboarding Plan",
+        category: "Onboarding",
+        display: "Build a 30-60-90 day plan for {{Employee Name}} based on their behavioral style and role demands.",
+        prompt: `I want a customized 30-60-90-day onboarding plan.\n\nAsk me for the Person's Name and their role.\n\nDeliver a plan structured around their behavioral preferences, including 3 "onboarding traps" to avoid.`
+      },
+      {
+        title: "Walk Someone Through Their PI Results",
+        category: "Onboarding",
+        display: "Script a PI readback for {{Employee Name}} — conversational and supportive, not evaluative.",
+        prompt: `I want to conduct a PI Readback for someone.\n\nAsk me for the person's Name and the context for this readback.\n\nDeliver a supportive, conversational Readback script.`
+      }
+    ]
   },
   {
-    title: "What Am I Naturally Wired For?",
-    desc: "Understand your own behavioral drives in plain language — what energizes you and where your blind spots are.",
-    category: "Performance & Career Development",
-    display: "Show my top behavioral drives, blind spots, and what I need to do my best work.",
-    prompt: `I want to better understand my own behavioral drives.\n\nFirst, look up my Behavioral Assessment and identify my top 2–3 strongest drives.\n\nDeliverables — Personal Behavioral Snapshot:\n1. My Natural Strengths\n2. My Blind Spots\n3. My Behavioral Needs`
+    id: "coaching",
+    num: "USE CASE 04",
+    title: "Coaching & 1:1s at Scale",
+    problem: "When you have 14 managers and 14 different coaching needs — and you can't be in every room.",
+    quote: {
+      text: "Before PI Assistant, every manager got a 30-minute call from me when they had a tough direct report. Now I send them a coaching plan tailored to that person and they're set in five minutes.",
+      attr: "Head of HR · Series B SaaS · Closed beta"
+    },
+    prompts: [
+      {
+        title: "Behavioral Coaching Guide",
+        category: "Coaching & Feedback",
+        display: "Create a coaching guide for {{Employee Name}}'s manager, tailored to their behavioral style.",
+        prompt: `Help me create a behavioral coaching guide for a manager.\n\nFirst, ask for the Employee's Name and confirm whether I'm the direct manager or an HR partner.\n\nDeliver a one-page manager script for the coaching conversation.`
+      },
+      {
+        title: "Productive 1:1 Outline",
+        category: "Meetings & Communication",
+        display: "Build a 30-minute 1:1 agenda optimized for {{Person A}} and {{Person B}}'s behavioral drives.",
+        prompt: `I want a 1:1 meeting outline behaviorally optimized for two people.\n\nAsk me for the participant names and the objective of the meeting.\n\nDeliver a 30-minute 1:1 agenda that balances both people's needs.`
+      },
+      {
+        title: "Promotion Readiness Analysis",
+        category: "Performance & Career Development",
+        display: "Assess the behavioral stretch for {{Employee Name}} moving into {{Target Role}}.",
+        prompt: `I want to analyze the behavioral stretch required for a promotion.\n\nAsk me for the Employee's Name and the Target Job Title.\n\nDeliver an honest assessment of the biggest behavioral challenges, with 3 specific coaching steps.`
+      },
+      {
+        title: "Leadership Bias & Relationship Risk",
+        category: "Performance & Career Development",
+        display: "Surface my leadership blind spots and relationship risks with {{Employee Name}}.",
+        prompt: `I want to check my own leadership blind spots.\n\nAsk me for the name of the person or people I'm interacting with.\n\nDeliver a summary of the key blind spots in this specific relationship dynamic.`
+      }
+    ]
   },
   {
-    title: "Prepare for Conflict Resolution",
-    desc: "A complete facilitator's guide for mediating friction between two individuals.",
-    category: "Coaching & Feedback",
-    display: "Build a mediation guide for friction between {{Person A}} and {{Person B}} — with bridge language for each stage.",
-    prompt: `I want to prepare for a conflict resolution session between two people.\n\nFirst, ask me for the Names of the two people and a brief description of the friction.\n\nThen look up both behavioral patterns and map where their Factor placements are clashing.\n\nDeliverables: A structured 3–4-stage mediation agenda with "Bridge Language" for each stage.`
+    id: "team-dynamics",
+    num: "USE CASE 05",
+    title: "Team Dynamics & Culture",
+    problem: "When the team isn't gelling — and you need to know why before the next leadership offsite.",
+    quote: {
+      text: "Our engineering and product teams were clashing constantly. PI Assistant mapped the friction in five minutes and gave me bridge language I actually used in a leadership offsite the next day.",
+      attr: "HR Director · Fintech scale-up · Closed beta"
+    },
+    prompts: [
+      {
+        title: "Analyze Team Dynamics & Gaps",
+        category: "Team Dynamics",
+        display: "Analyze {{Team Name}}'s collective drives and identify the behavioral gaps holding them back.",
+        prompt: `I want to analyze my team's dynamics and identify behavioral gaps.\n\nFirst, ask me for the Team Name. Then ask:\n1. "What is the main goal this team is currently driving toward?"\n2. "What are the biggest obstacles impacting the team?"\n\nThen look up the team's Team Type and individual behavioral patterns.\n\nDeliverables: A summary of the team's work style and the "Missing Drive" explanation.`
+      },
+      {
+        title: "PI Workshop Facilitator Guide",
+        category: "Team Dynamics",
+        display: "Design a 60-minute PI workshop for {{Team Name}} focused on where they're currently stuck.",
+        prompt: `I want to host a PI refresh workshop for a team.\n\nAsk me for the Team Name and the area where the team is currently "stuck."\n\nDeliver a 60-minute workshop agenda with a behavioral icebreaker and a targeted deep-dive exercise.`
+      },
+      {
+        title: "Culture Gap Analysis",
+        category: "Culture & Strategy",
+        display: "Map our company values against our team's behavioral DNA and surface where people are over-adapting.",
+        prompt: `I want to assess if our company culture matches our employees' natural strengths.\n\nUse "Company Settings" to find the top 3 values. Then map each against collective drives.\n\nDeliver a Culture-Behavior Alignment Report highlighting fits and tension points.`
+      },
+      {
+        title: "Change Management Strategy",
+        category: "Meetings & Communication",
+        display: "Build a behavioral communication plan for {{the change}} with resistance risks and change champions mapped.",
+        prompt: `I want a change management strategy for a major strategic shift.\n\nAsk me what the change is and who the key leaders are.\n\nDeliver a draft communication strategy addressing the full spectrum of drive-based needs.`
+      }
+    ]
   },
   {
-    title: "Behavioral Coaching Guide",
-    desc: "A manager's cheat sheet — engagement strategies and coaching tailored to an employee's behavioral style.",
-    category: "Coaching & Feedback",
-    display: "Create a coaching guide for {{Employee Name}}'s manager, tailored to their behavioral style.",
-    prompt: `Help me create a behavioral coaching guide for a manager.\n\nFirst, ask for the Employee's Name and confirm whether I'm the direct manager or an HR partner.\n\nDeliver a one-page manager script for the coaching conversation.`
-  },
-  {
-    title: "Tailor Employee Message",
-    desc: "Drafts a message tailored to a specific person's drives so it lands the way you intend.",
-    category: "Coaching & Feedback",
-    display: "Draft a {{channel}} message to {{Employee Name}} written to land with their behavioral drives.",
-    prompt: `I want to tailor a message to a specific employee.\n\nAsk me for the Employee's Name, the Goal of the Message, and the channel (email, DM, in person).\n\nDeliver a behaviorally-tailored draft message.`
-  },
-  {
-    title: "Culture Gap Analysis",
-    desc: "Compares stated company values with the actual behavioral DNA of the staff.",
-    category: "Culture & Strategy",
-    display: "Map our company values against our team's behavioral DNA and surface where people are over-adapting.",
-    prompt: `I want to assess if our company culture matches our employees' natural strengths.\n\nUse "Company Settings" to find the top 3 values. Then map each against collective drives.\n\nDeliver a Culture-Behavior Alignment Report highlighting fits and tension points.`
-  },
-  {
-    title: "Make the Case for PI",
-    desc: "Talking points to explain PI value to a skeptical stakeholder — in their language, not HR jargon.",
-    category: "Culture & Strategy",
-    display: "Build talking points for {{Stakeholder Name}} who is skeptical of PI — in their language, not HR jargon.",
-    prompt: `I want to explain the value of PI to a skeptical stakeholder.\n\nAsk me for the Stakeholder's Name, Job Title, and Primary Business Concern.\n\nDeliver a 3-paragraph explanation that avoids PI jargon and builds the case in their language.`
-  },
-  {
-    title: "Executive ROI Business Case",
-    desc: "A data-driven memo showing the financial value of PI linked to measurable business outcomes.",
-    category: "Culture & Strategy",
-    display: "Write an executive memo linking PI to measurable outcomes for {{executive audience}}.",
-    prompt: `I want to build a business case for PI for my executive team.\n\nAsk me who the primary audience is and for the organization's current pain points.\n\nDeliver an executive memo linking PI usage to measurable business outcomes.`
-  },
-  {
-    title: "Productive 1:1 Outline",
-    desc: "Creates a 1:1 agenda behaviorally optimized for two specific people.",
-    category: "Meetings & Communication",
-    display: "Build a 30-minute 1:1 agenda optimized for {{Person A}} and {{Person B}}'s behavioral drives.",
-    prompt: `I want a 1:1 meeting outline behaviorally optimized for two people.\n\nAsk me for the participant names and the objective of the meeting.\n\nDeliver a 30-minute 1:1 agenda that balances both people's needs.`
-  },
-  {
-    title: "Change Management Strategy",
-    desc: "A behavioral communication strategy for a major change — with resistance risks and change champions identified.",
-    category: "Meetings & Communication",
-    display: "Build a behavioral communication plan for {{the change}} with resistance risks and change champions mapped.",
-    prompt: `I want a change management strategy for a major strategic shift.\n\nAsk me what the change is and who the key leaders are.\n\nDeliver a draft communication strategy addressing the full spectrum of drive-based needs.`
-  },
-  {
-    title: "Onboarding Plan",
-    desc: "A personalized 30-60-90 day plan based on a new hire's behavioral drives and role demands.",
-    category: "Onboarding",
-    display: "Build a 30-60-90 day plan for {{Employee Name}} based on their behavioral style and role demands.",
-    prompt: `I want a customized 30-60-90-day onboarding plan.\n\nAsk me for the Person's Name and their role.\n\nDeliver a plan structured around their behavioral preferences, including 3 "onboarding traps" to avoid.`
-  },
-  {
-    title: "Walk Someone Through Their PI Results",
-    desc: "A conversational script for delivering a PI readback — supportive, not evaluative.",
-    category: "Onboarding",
-    display: "Script a PI readback for {{Employee Name}} — conversational and supportive, not evaluative.",
-    prompt: `I want to conduct a PI Readback for someone.\n\nAsk me for the person's Name and the context for this readback.\n\nDeliver a supportive, conversational Readback script.`
-  },
-  {
-    title: "Promotion Readiness Analysis",
-    desc: "Evaluates if an employee's drives align with a more senior role — before the promotion conversation.",
-    category: "Performance & Career Development",
-    display: "Assess the behavioral stretch for {{Employee Name}} moving into {{Target Role}}.",
-    prompt: `I want to analyze the behavioral stretch required for a promotion.\n\nAsk me for the Employee's Name and the Target Job Title.\n\nDeliver an honest assessment of the biggest behavioral challenges, with 3 specific coaching steps.`
-  },
-  {
-    title: "Leadership Bias & Relationship Risk",
-    desc: "Analyzes how a manager's profile might be biasing their leadership — useful before reviews or difficult conversations.",
-    category: "Performance & Career Development",
-    display: "Surface my leadership blind spots and relationship risks with {{Employee Name}}.",
-    prompt: `I want to check my own leadership blind spots.\n\nAsk me for the name of the person or people I'm interacting with.\n\nDeliver a summary of the key blind spots in this specific relationship dynamic.`
-  },
-  {
-    title: "The Four Factors Explained",
-    desc: "A guided tour of Dominance, Extraversion, Patience, and Formality — plain language with real workplace examples.",
-    category: "PI Education",
-    display: "Walk me through Dominance, Extraversion, Patience, and Formality with real workplace examples.",
-    prompt: `I want to understand the four PI behavioral factors.\n\nWalk me through each factor one at a time: Dominance, Extraversion, Patience, and Formality. For each, explain what it measures, what high and low expressions look like, and a real-world scenario.`
-  },
-  {
-    title: "Interview Prep & Panel Briefing",
-    desc: "A gap-based interview guide and panel briefing aligned to the candidate's behavioral profile.",
-    category: "Talent Acquisition",
-    display: "Generate 5 gap-based interview questions for {{Candidate Name}} with a Look-For guide for each.",
-    prompt: `I want to prepare for a behaviorally-informed interview.\n\nAsk me for the Candidate's Name.\n\nDeliver 5 targeted behavioral interview questions probing specific gaps, each with a "Look-For" guide.`
-  },
-  {
-    title: "PI Workshop Facilitator Guide",
-    desc: "A 60-minute workshop plan for a team to re-spark PI interest and address a specific behavioral challenge.",
-    category: "Team Dynamics",
-    display: "Design a 60-minute PI workshop for {{Team Name}} focused on where they're currently stuck.",
-    prompt: `I want to host a PI refresh workshop for a team.\n\nAsk me for the Team Name and the area where the team is currently "stuck."\n\nDeliver a 60-minute workshop agenda with a behavioral icebreaker and a targeted deep-dive exercise.`
-  },
-  {
-    title: "Crisis Communication Plan",
-    desc: "Tailors leadership messaging during high-stress events, mapped to the team's behavioral needs.",
-    category: "Team Dynamics",
-    display: "Build a crisis communication plan for {{Team Name}} during {{stressor}}, addressing behavioral needs.",
-    prompt: `I want a crisis communication plan.\n\nAsk me for the Team Name and the Nature of the Stressor.\n\nDeliver a crisis communication plan addressing the team's specific behavioral needs.`
+    id: "education",
+    num: "USE CASE 06",
+    title: "Educating Your Leaders",
+    problem: "When stakeholders need to understand the why behind PI — and you need their buy-in fast.",
+    quote: {
+      text: "I needed to explain why we invested in PI to a skeptical CFO. Forty-five seconds later I had a memo in his language. He approved another 12 licenses the same week.",
+      attr: "CHRO · Manufacturing company · Closed beta"
+    },
+    prompts: [
+      {
+        title: "Make the Case for PI",
+        category: "Culture & Strategy",
+        display: "Build talking points for {{Stakeholder Name}} who is skeptical of PI — in their language, not HR jargon.",
+        prompt: `I want to explain the value of PI to a skeptical stakeholder.\n\nAsk me for the Stakeholder's Name, Job Title, and Primary Business Concern.\n\nDeliver a 3-paragraph explanation that avoids PI jargon and builds the case in their language.`
+      },
+      {
+        title: "Executive ROI Business Case",
+        category: "Culture & Strategy",
+        display: "Write an executive memo linking PI to measurable outcomes for {{executive audience}}.",
+        prompt: `I want to build a business case for PI for my executive team.\n\nAsk me who the primary audience is and for the organization's current pain points.\n\nDeliver an executive memo linking PI usage to measurable business outcomes.`
+      },
+      {
+        title: "The Four Factors Explained",
+        category: "PI Education",
+        display: "Walk me through Dominance, Extraversion, Patience, and Formality with real workplace examples.",
+        prompt: `I want to understand the four PI behavioral factors.\n\nWalk me through each factor one at a time: Dominance, Extraversion, Patience, and Formality. For each, explain what it measures, what high and low expressions look like, and a real-world scenario.`
+      },
+      {
+        title: "What Am I Naturally Wired For?",
+        category: "Performance & Career Development",
+        display: "Show my top behavioral drives, blind spots, and what I need to do my best work.",
+        prompt: `I want to better understand my own behavioral drives.\n\nFirst, look up my Behavioral Assessment and identify my top 2–3 strongest drives.\n\nDeliverables — Personal Behavioral Snapshot:\n1. My Natural Strengths\n2. My Blind Spots\n3. My Behavioral Needs`
+      }
+    ]
   }
 ];
 
 /* ── STATE ── */
-let activeCategory = 'All';
 let searchQuery = '';
 let piMode = true;
 
-/* ── CATEGORIES ── */
-const CATEGORIES = ['All', ...new Set(PROMPTS.map(p => p.category))];
-
-/* ── CUSTOMER QUOTES (injected at intervals) ── */
-const QUOTES = [
-  { text: "I didn't know what to ask until I saw these prompts. Within five minutes I had something I actually sent to my manager.", attr: "HR Director · Mid-market manufacturing company · Closed beta" },
-  { text: "The coaching feedback script changed how I deliver hard conversations. I used to dread them — now I actually look forward to the prep.", attr: "VP of People · Series B SaaS · Closed beta" },
-  { text: "I used this to open a conversation with a CHRO about behavioral science in hiring. She booked a follow-up the same day.", attr: "PI Partner · Consulting firm · Closed beta" },
-];
-
-function quoteHTML(q) {
-  return `<div class="lib-quote-card">
-    <div class="lib-quote-text">"${q.text}"</div>
-    <div class="lib-quote-attr">— ${q.attr}</div>
-  </div>`;
-}
-
+/* ── TOKEN RENDERING ── */
 function tokenize(text) {
   if (piMode) {
     return text.replace(/\{\{([^}]+)\}\}/g, '<span class="lib-token">$1</span>');
@@ -939,67 +1043,79 @@ function setPIMode(val) {
   piMode = val;
   document.getElementById('btn-with-pi').classList.toggle('active', val);
   document.getElementById('btn-without-pi').classList.toggle('active', !val);
-  renderGrid();
+  renderLibrary();
 }
 
 /* ── RENDER SIDEBAR ── */
 function renderSidebar() {
-  document.getElementById('lib-nav-list').innerHTML = CATEGORIES.map(cat =>
-    `<li class="lib-nav-item ${cat === activeCategory ? 'active' : ''}" onclick="setCategory('${cat}')">${cat}</li>`
+  document.getElementById('lib-nav-list').innerHTML = USE_CASES.map(uc =>
+    `<li class="lib-nav-item" onclick="jumpToUseCase('${uc.id}')">${uc.title}</li>`
   ).join('');
 }
 
-/* ── RENDER GRID ── */
-function renderGrid() {
-  const q = searchQuery.toLowerCase();
-  const filtered = PROMPTS.filter(p => {
-    const matchCat = activeCategory === 'All' || p.category === activeCategory;
-    const matchQ = !q || p.title.toLowerCase().includes(q) || p.display.toLowerCase().includes(q) || p.desc.toLowerCase().includes(q);
-    return matchCat && matchQ;
-  });
-
-  if (filtered.length === 0) {
-    document.getElementById('lib-grid').innerHTML = `<div class="lib-empty">No prompts found.</div>`;
-    return;
+function jumpToUseCase(id) {
+  const target = document.getElementById('uc-' + id);
+  const scroll = document.getElementById('lib-scroll');
+  if (target && scroll) {
+    scroll.scrollTo({ top: target.offsetTop - 12, behavior: 'smooth' });
   }
-
-  const cards = filtered.map(p => {
-    const safePrompt = p.prompt.replace(/`/g, '\\`').replace(/\$/g, '\\$');
-    return `<div class="lib-card-new">
-      <div class="lib-card-top">
-        <div class="lib-card-cat">${p.category}</div>
-        <button class="lib-card-copy" onclick="copyPrompt(\`${safePrompt}\`)" title="Copy prompt">
-          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-        </button>
-      </div>
-      <div class="lib-card-title-new">${p.title}</div>
-      <div class="lib-card-display">${tokenize(p.display)}</div>
-    </div>`;
-  });
-
-  const quotePositions = [4, 10, 16];
-  let html = '';
-  let quoteIdx = 0;
-  cards.forEach((card, i) => {
-    html += card;
-    if (!searchQuery && activeCategory === 'All' && quotePositions.includes(i) && quoteIdx < QUOTES.length) {
-      html += quoteHTML(QUOTES[quoteIdx++]);
-    }
-  });
-
-  document.getElementById('lib-grid').innerHTML = html;
+  // mark active
+  document.querySelectorAll('.lib-nav-item').forEach(el => el.classList.remove('active'));
+  const activeNav = Array.from(document.querySelectorAll('.lib-nav-item')).find(el => el.textContent.trim() === USE_CASES.find(uc => uc.id === id).title);
+  if (activeNav) activeNav.classList.add('active');
 }
 
-/* ── ACTIONS ── */
-function setCategory(cat) {
-  activeCategory = cat;
-  renderSidebar();
-  renderGrid();
+/* ── RENDER PROMPT CARD ── */
+function promptCardHTML(p) {
+  const safePrompt = p.prompt.replace(/`/g, '\\`').replace(/\$/g, '\\$');
+  return `<div class="lib-card-new">
+    <div class="lib-card-top">
+      <div class="lib-card-cat">${p.category}</div>
+      <button class="lib-card-copy" onclick="copyPrompt(\`${safePrompt}\`)" title="Copy prompt">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+      </button>
+    </div>
+    <div class="lib-card-title-new">${p.title}</div>
+    <div class="lib-card-display">${tokenize(p.display)}</div>
+  </div>`;
+}
+
+/* ── RENDER LIBRARY ── */
+function renderLibrary() {
+  const q = searchQuery.toLowerCase();
+
+  const sections = USE_CASES.map(uc => {
+    const filteredPrompts = uc.prompts.filter(p => {
+      if (!q) return true;
+      return p.title.toLowerCase().includes(q) ||
+             p.display.toLowerCase().includes(q) ||
+             p.category.toLowerCase().includes(q);
+    });
+
+    if (q && filteredPrompts.length === 0) return '';
+
+    const promptCards = filteredPrompts.map(p => promptCardHTML(p)).join('');
+
+    return `<section class="lib-uc" id="uc-${uc.id}">
+      <div class="lib-uc-head">
+        <div class="lib-uc-num">${uc.num}</div>
+        <div class="lib-uc-title">${uc.title}</div>
+        <div class="lib-uc-problem">${uc.problem}</div>
+      </div>
+      <div class="lib-uc-quote">
+        <div class="lib-uc-quote-text">"${uc.quote.text}"</div>
+        <div class="lib-uc-quote-attr">— ${uc.quote.attr}</div>
+      </div>
+      <div class="lib-uc-prompts">${promptCards}</div>
+    </section>`;
+  }).join('');
+
+  document.getElementById('lib-content').innerHTML = sections || '<div class="lib-empty">No prompts found.</div>';
 }
 
 function libSearch(val) {
   searchQuery = val;
-  renderGrid();
+  renderLibrary();
 }
 
 function copyPrompt(text) {
@@ -1014,7 +1130,7 @@ function showToast() {
 
 /* ── INIT ── */
 renderSidebar();
-renderGrid();
+renderLibrary();
 </script>
 
 </body>
